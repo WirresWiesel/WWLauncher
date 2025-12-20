@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Launcher" Height="450" Width="800">
+        Title="WWLauncher" Height="450" Width="800"
+        Icon="pack://application:,,,/Icon/WWLauncher.ico">
 
     <Grid Margin="8">
         <Grid.ColumnDefinitions>

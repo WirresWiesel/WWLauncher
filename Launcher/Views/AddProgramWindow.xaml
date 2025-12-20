@@ -5,7 +5,8 @@
         Height="235"
         Width="360"
         WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        Icon="pack://application:,,,/Icon/WWLauncher.ico">
 
     <Grid Margin="16">
         <Grid.RowDefinitions>
