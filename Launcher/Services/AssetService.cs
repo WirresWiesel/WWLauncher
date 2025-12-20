@@ -62,18 +62,17 @@ namespace Launcher.Services
             else
                 Debug.WriteLine("Asset is null, cannot remove program");
         }
-        public static void AddMaingameToAsset(Asset asset, Programinfo proginfo)
+        public static void AddMainGameToAsset(Asset asset, Programinfo proginfo)
         {
             if (asset != null)
             {
-                asset.Name = proginfo.Name;
                 asset.EXEPath = proginfo.EXEPath;
             }
             else
                 Debug.WriteLine("Asset is null, cannot add program");
         }
 
-        public bool IsSetMaingamePath(Asset asset)
+        public bool IsSetMainGamePath(Asset asset)
         {
             if (!string.IsNullOrEmpty(asset.EXEPath))
                 return true;

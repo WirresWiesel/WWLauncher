@@ -1,2 +1,7 @@
-﻿Version 0.1
+﻿Version 0.2
+Visual updates after Main Games is selected and set
+Redone the Main Game selection window
+Name of .exe does not overwrite Asset.Name anymore
+
+Version 0.1
 Basic functions -> first release state

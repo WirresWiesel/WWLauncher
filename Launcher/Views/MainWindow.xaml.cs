@@ -60,7 +60,7 @@ namespace Launcher.Views
 
         private void BtnClick_AddMaingame(object sender, RoutedEventArgs e)
         {
-            var window = new Views.AddProgramWindow();
+            var window = new Views.AddMainGameWindow();
             window.ShowDialog();
 
             if (window.DialogResult == true && window.Result != null)
@@ -68,6 +68,7 @@ namespace Launcher.Views
                 _launcherLogic?.AddMaingameToCurrentAsset(window.Result);
                 _assetService.SaveAssetList();
             }
+            this.UpdateVisuals();
         }
 
         private void BtnClick_RemoveProgram(object sender, RoutedEventArgs e)
@@ -155,7 +156,7 @@ namespace Launcher.Views
             if (_asset != null)
             {
                 _StringState = _asset.State;
-                _booleanState = _assetService.IsSetMaingamePath(_asset!);
+                _booleanState = _assetService.IsSetMainGamePath(_asset!);
             }
             else
             {

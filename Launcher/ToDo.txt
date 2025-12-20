@@ -5,3 +5,8 @@
 
 
 Bugs------------------------------
+
+
+solved Bugs-----------------------
+Bug in v0.1
+- Window while add Main Games is overwriting the Asset.Name

@@ -30,7 +30,7 @@ namespace Launcher.Logic
 
         public void AddMaingameToCurrentAsset(Programinfo programinfo)
         {
-            AssetService.AddMaingameToAsset(_currentAsset!, programinfo);
+            AssetService.AddMainGameToAsset(_currentAsset!, programinfo);
         }
 
         public void UpdateLstProgram(System.Windows.Controls.ListBox lstProgram)
