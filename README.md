@@ -4,6 +4,7 @@ WWLauncher is a lightweight launcher designed to manage and start programs easil
 Features:
 - Add and manage Assets
 - Add and manage a List of programs for each Asset
+- Start/Stop/Delete a single program or the whole List (Start Asset)
 - Clear ListView with status indicator
 
 Technical Details:
