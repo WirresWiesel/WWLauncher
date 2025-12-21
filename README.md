@@ -18,4 +18,5 @@ Notes:
 Features may be incomplete and changes are expected.
 Feedback and suggestions are very welcome.
 
-<img width="782" height="442" alt="image" src="https://github.com/user-attachments/assets/60ede505-31c2-408c-8cdc-3c4e9f8521ea" />
+<img width="784" height="439" alt="image" src="https://github.com/user-attachments/assets/5001a51d-ded1-4dd9-a08f-bf62c510a695" />
+
