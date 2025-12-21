@@ -1,4 +1,7 @@
-﻿Version 0.2
+﻿Version 0.3
+Added Button to delete Assets
+
+Version 0.2
 Visual updates after Main Games is selected and set
 Redone the Main Game selection window
 Name of .exe does not overwrite Asset.Name anymore

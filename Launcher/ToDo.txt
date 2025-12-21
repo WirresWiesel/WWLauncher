@@ -4,12 +4,15 @@
 Bugs------------------------------
 
 solved Bugs-----------------------
-Bug in v0.1
+Bug fixed v0.2
 - Window while add Main Games is overwriting the Asset.Name
+Bug fixed v0.3
 - Canceling while adding Asset leaves empty Asset in the list
 
 new Features----------------------
+v0.3
 - possibility to delete Assets
 
 Fixes-----------------------------
+v0.3
 - Button for adding program move to the other buttons for the program handling
