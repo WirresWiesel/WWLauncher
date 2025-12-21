@@ -57,6 +57,10 @@
                     Content="Stop Asset"
                     Click="BtnClick_StopProgramAll"
                     Margin="0,0,0,6"/>
+            <Button x:Name="BtnDeleteAsset"
+                    Content="Delete Asset"
+                    Click="BtnClick_DeleteAsset"
+                    Margin="0,0,0,6"/> 
         </StackPanel>
 
         <!-- Program Management Buttons -->
@@ -72,10 +76,6 @@
                     Content="Choose Main Game"
                     Click="BtnClick_AddMaingame"
                     Margin="0,0,0,6"/>
-            <Button x:Name="BtnAddProgram"
-                    Content="Add Program"
-                    Click="BtnClick_AddProgram"
-                    Margin="0,0,0,6"/>
         </StackPanel>
 
         <!-- Program Control Buttons -->
@@ -83,6 +83,10 @@
             <Label Content="Edit Programs"
                    HorizontalContentAlignment="Left"
                    VerticalContentAlignment="Bottom"/>
+            <Button x:Name="BtnAddProgram"
+                    Content="Add Program"
+                    Click="BtnClick_AddProgram"
+                    Margin="0,0,0,6"/>
             <Button x:Name="BtnStartProgramSingle"
                     Content="Start Program"
                     Click="BtnClick_StartProgramSingle"

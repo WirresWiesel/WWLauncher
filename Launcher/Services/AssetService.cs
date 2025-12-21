@@ -35,6 +35,15 @@ namespace Launcher.Services
             this.SaveAssetList();
         }
 
+        public void DeleteAsset(Asset? asset)
+        {
+            if (asset != null)
+            {
+                Assets.Remove(asset);
+                this.SaveAssetList();
+            }
+        }
+
         public void SaveAssetList()
         {
             JsonSerializerOptions JsonOptions = new JsonSerializerOptions

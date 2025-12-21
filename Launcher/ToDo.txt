@@ -1,12 +1,15 @@
 ﻿ToDo´s----------------------------
-
-
-
-
+- Size of the Program Column should resize automatically ?? to check
 
 Bugs------------------------------
-
 
 solved Bugs-----------------------
 Bug in v0.1
 - Window while add Main Games is overwriting the Asset.Name
+- Canceling while adding Asset leaves empty Asset in the list
+
+new Features----------------------
+- possibility to delete Assets
+
+Fixes-----------------------------
+- Button for adding program move to the other buttons for the program handling

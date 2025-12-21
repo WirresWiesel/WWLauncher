@@ -182,15 +182,24 @@ namespace Launcher.Views
                 "Neues Asset erstellen",
                 "Neues Asset");
 
-            _assetService.CreateAsset(assetName);
-            this.InitializeLauncher();
+            if (!(assetName == string.Empty))
+            { 
+                _assetService.CreateAsset(assetName);
+                this.InitializeLauncher();
 
-            // Make the ComboBox select the last created Asset
-            Asset? _asset = _assetService.Assets.FirstOrDefault(p => p.Name == assetName);
-            if ( _asset != null)
-            {
-                ComboAssets.SelectedItem = _asset;
+                // Make the ComboBox select the last created Asset
+                Asset? _asset = _assetService.Assets.FirstOrDefault(p => p.Name == assetName);
+                if (_asset != null)
+                {
+                    ComboAssets.SelectedItem = _asset;
+                }
             }
+        }
+
+        private void BtnClick_DeleteAsset(object sender, RoutedEventArgs e)
+        {
+            _assetService.DeleteAsset(ComboAssets.SelectedItem as Asset);
+            this.InitializeLauncher();
         }
     }
 }
