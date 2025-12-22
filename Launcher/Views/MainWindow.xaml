@@ -6,9 +6,16 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="WWLauncher" Height="450" Width="800"
+        Background="{DynamicResource WindowBackgroundBrush}" Foreground="{DynamicResource ForegroundBrush}"
         Icon="pack://application:,,,/Icon/WWLauncher.ico">
 
     <Grid Margin="8">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="220"/>
             <!-- Assets -->
@@ -20,21 +27,61 @@
             <!-- Program List -->
         </Grid.ColumnDefinitions>
 
+        <Border Grid.Row="0" Grid.ColumnSpan="4"
+                Background="#9B9B9B"
+                Padding="0.5"
+                BorderBrush="#2A2A2A"
+                BorderThickness="0,0,0,1"
+                CornerRadius="4">
+            <Border.Effect>
+                <DropShadowEffect Color="Black"
+                                  BlurRadius="10"
+                                  ShadowDepth="2"
+                                  Opacity="0.4"/>
+            </Border.Effect>
+
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <Button x:Name="BtnMenuSettings"
+                        Content="Settings"
+                        Click="BtnClick_OpenMenuSettings"
+                        Margin="0,0,0.2,0"/>
+            </StackPanel>
+        </Border>
+
+
         <!-- Assets -->
-        <StackPanel Grid.Column="0" Margin="0,0,6,0" VerticalAlignment="Top">
+        <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,0,6,0" VerticalAlignment="Top">
             <Label Content="Assets"
                    HorizontalContentAlignment="Left"
-                   VerticalContentAlignment="Bottom"/>
+                   VerticalContentAlignment="Bottom"
+                   Foreground="{DynamicResource ForegroundBrush}"/>
             <ComboBox x:Name="ComboAssets"
                       Width="180"
                       DisplayMemberPath="Name"
                       SelectionChanged="ComboAssets_SelectionChanged"
                       HorizontalAlignment="Left"
-                      IsEditable="True"
                       Text="Choose Asset ..."
-                      Margin="0,0,0,6"/>
+                      Margin="0,0,0,6"
+                      IsEditable="True">
+                      <!--Foreground="{DynamicResource ComboBoxText}" Background="{DynamicResource WindowBackgroundBrush}"-->
+                <ComboBox.Resources>
+                    <Style TargetType="TextBox">
+                        <!--Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/-->
+                        <!--Setter Property="Background" Value="{DynamicResource WindowBackgroundBrush}"/-->
+                    </Style>
+                </ComboBox.Resources>
+
+                <ComboBox.ItemContainerStyle>
+                    <Style TargetType="ComboBoxItem">
+                        <!--Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
+                        <Setter Property="Background" Value="{DynamicResource WindowBackgroundBrush}"/-->
+                    </Style>
+                </ComboBox.ItemContainerStyle>
+            </ComboBox>
+
             <CheckBox x:Name="ChkBoxStartMaingame"
-                    Content="start with Main Game"/>
+                    Content="start with Main Game"
+                    Foreground="{DynamicResource ForegroundBrush}" Background="{DynamicResource WindowBackgroundBrush}"/>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                 <Ellipse x:Name="EllipseMainGameSet"
                          Width="16"
@@ -60,14 +107,15 @@
             <Button x:Name="BtnDeleteAsset"
                     Content="Delete Asset"
                     Click="BtnClick_DeleteAsset"
-                    Margin="0,0,0,6"/> 
+                    Margin="0,0,0,6"/>
         </StackPanel>
 
         <!-- Program Management Buttons -->
-        <StackPanel Grid.Column="1" VerticalAlignment="Top" Margin="3,0,3,0">
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="3,0,3,0">
             <Label Content="Edit Assets"
                    HorizontalContentAlignment="Left"
-                   VerticalContentAlignment="Bottom"/>
+                   VerticalContentAlignment="Bottom"
+                   Foreground="{DynamicResource ForegroundBrush}"/>
             <Button x:Name="BtnCreateAsset"
                     Content="Create new Asset"
                     Click="BtnClick_CreateNewAsset"
@@ -79,10 +127,11 @@
         </StackPanel>
 
         <!-- Program Control Buttons -->
-        <StackPanel Grid.Column="2" VerticalAlignment="Top" Margin="3,0,3,0">
+        <StackPanel Grid.Row="1" Grid.Column="2" VerticalAlignment="Top" Margin="3,0,3,0">
             <Label Content="Edit Programs"
                    HorizontalContentAlignment="Left"
-                   VerticalContentAlignment="Bottom"/>
+                   VerticalContentAlignment="Bottom"
+                   Foreground="{DynamicResource ForegroundBrush}"/>
             <Button x:Name="BtnAddProgram"
                     Content="Add Program"
                     Click="BtnClick_AddProgram"
@@ -105,10 +154,11 @@
         </StackPanel>
 
         <!-- Program List -->
-        <ListView Grid.Column="3" x:Name="LstProgram"
+        <ListView Grid.Row="3" Grid.Column="3" x:Name="LstProgram"
                   HorizontalContentAlignment="Left"
                   VerticalContentAlignment="Center"
-                  SelectionChanged="LstSelectionChanged_LstProgram">
+                  SelectionChanged="LstSelectionChanged_LstProgram"
+                  Background="{DynamicResource WindowBackgroundBrush}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Program" DisplayMemberBinding="{Binding Name}" Width="Auto"/>
@@ -163,6 +213,6 @@
             </ListView.ItemContainerStyle>
 
         </ListView>
-        
+
     </Grid>
 </Window>

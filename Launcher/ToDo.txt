@@ -1,15 +1,24 @@
 ﻿ToDo´s----------------------------
-- Size of the Program Column should resize automatically ?? to check
+- Size of the Program Column should resize after adding a new Program
+- CheckBox checkmark switch to white - only posible with a template
+- Dropdown ComboBox redo colors of the active and inactive assets
 
 Bugs------------------------------
 
 solved Bugs-----------------------
-Bug fixed v0.2
-- Window while add Main Games is overwriting the Asset.Name
+Bug fixed v0.4
+- After deleting Assetlist no empty .json is created
 Bug fixed v0.3
 - Canceling while adding Asset leaves empty Asset in the list
+Bug fixed v0.2
+- Window while add Main Games is overwriting the Asset.Name
 
 new Features----------------------
+v0.4
+- Settings Window/Menu - actually only for Dark/Light Mode
+- Settings.json added to save Settings
+- Dark/Light Mode can be set in Settings
+- Update Time can be set in Settings
 v0.3
 - possibility to delete Assets
 

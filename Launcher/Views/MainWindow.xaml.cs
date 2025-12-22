@@ -14,6 +14,7 @@ namespace Launcher.Views
     {
         private readonly LauncherLogic? _launcherLogic;
         private readonly AssetService _assetService;
+        private readonly SettingsService _settingsService;
 
         public MainWindow()
         {
@@ -21,12 +22,16 @@ namespace Launcher.Views
 
             _launcherLogic = new LauncherLogic();
             _assetService = new AssetService();
+            _settingsService = new SettingsService();
             this.InitializeLauncher();
         }
 
         private void InitializeLauncher()
         {
+            _settingsService.GetSettings();
             ComboAssets.ItemsSource = _assetService.GetAssetList();
+            _launcherLogic?.SetTheme(_settingsService.Settings);
+            _launcherLogic?.SetStatusUpdateTimerInterval(_settingsService.Settings.StatusUpdateInterval);
             this.UpdateVisuals();
         }
 
@@ -167,20 +172,25 @@ namespace Launcher.Views
 
             if (_booleanState)
             {
-                TxtBlock_StateMaingamePath.Text = "Maingame is set";
+                TxtBlock_StateMaingamePath.Text = "Main Game is set";
             }
             else
             {
-                TxtBlock_StateMaingamePath.Text = "Maingame is not set";
+                TxtBlock_StateMaingamePath.Text = "Main Game is not set";
             }
         }
 
         private void BtnClick_CreateNewAsset(object sender, RoutedEventArgs e)
         {
-            string assetName = Interaction.InputBox(
-                "Name des neuen Assets:",
-                "Neues Asset erstellen",
-                "Neues Asset");
+            string assetName = string.Empty;
+
+            var addAssetWindow = new AddAssetWindow()
+            {
+                Owner = this
+            };
+
+            if (addAssetWindow.ShowDialog() == true)
+                assetName = addAssetWindow.AssetName;
 
             if (!(assetName == string.Empty))
             { 
@@ -200,6 +210,22 @@ namespace Launcher.Views
         {
             _assetService.DeleteAsset(ComboAssets.SelectedItem as Asset);
             this.InitializeLauncher();
+        }
+
+        private void BtnClick_OpenMenuSettings(object sender, RoutedEventArgs e)
+        {
+            var settingsWindow = new MenuSettingsWindow(_settingsService.Settings)
+            {
+                Owner = this
+            };
+
+            if (settingsWindow.ShowDialog() == true)
+            {
+                _settingsService.Settings = settingsWindow.Result;
+                _settingsService.SaveSettings();
+                _launcherLogic?.SetTheme(_settingsService.Settings);
+                _launcherLogic?.SetStatusUpdateTimerInterval(_settingsService.Settings.StatusUpdateInterval);
+            }
         }
     }
 }

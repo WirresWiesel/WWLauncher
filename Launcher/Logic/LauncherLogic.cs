@@ -11,9 +11,11 @@ namespace Launcher.Logic
     {
         private Asset? _currentAsset;
         private UpdateTimer _statusTimer;
+        private ThemeHandler _themeHandler;
 
         public LauncherLogic()
         {
+            _themeHandler = new ThemeHandler();
             _statusTimer = new UpdateTimer(TimeSpan.FromSeconds(30), UpdateProgramStates);
             _statusTimer.StartTimer();
         }
@@ -109,6 +111,7 @@ namespace Launcher.Logic
             {
                 Debug.WriteLine("No asset selected, cannot update program states");
             }
+            Debug.WriteLine($"Launcher Logic Timestamp: {DateTime.Now}");
         }
 
         private Process? FindProcess(string processName)
@@ -143,6 +146,19 @@ namespace Launcher.Logic
                 Debug.WriteLine("Error while checking process state: " + ex.Message);
                 return false;
             }
+        }
+
+        public void SetTheme(Settings.Settings settings)
+        {
+            if (settings.IsDarkMode)
+                _themeHandler.SetDarkMode();
+            else
+                _themeHandler.SetLightMode();
+        }
+
+        public void SetStatusUpdateTimerInterval(int intervalInSeconds)
+        {
+            _statusTimer.SetInterval(TimeSpan.FromSeconds(intervalInSeconds));
         }
     }
 }

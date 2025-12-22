@@ -8,7 +8,7 @@ namespace Launcher.Services
     // Defines methods for Asset handling
     class AssetService
     {
-        string Filepath = "Assets/Assetlist.json";
+        private static string Filepath = "Assets/Assetlist.json";
         public List<Models.Asset> Assets = new List<Models.Asset>();
 
     // Reads the asset list from a JSON file and returns it as a list of Asset objects
@@ -17,6 +17,7 @@ namespace Launcher.Services
             if (!File.Exists(Filepath))
             {
                 Debug.WriteLine("No Assetfile found");
+                CreateDefaultAsset();
             }
             else
             {
@@ -25,6 +26,11 @@ namespace Launcher.Services
                 Assets = JsonSerializer.Deserialize<List<Models.Asset>>(fileString) ?? Assets;
             }
             return Assets;
+        }
+
+        private void CreateDefaultAsset()
+        {
+            File.WriteAllText(Filepath, "[]");
         }
 
         public void CreateAsset(string assetName)

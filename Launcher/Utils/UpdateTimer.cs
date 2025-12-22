@@ -1,4 +1,5 @@
-﻿using System.Windows.Threading;
+﻿using System.Diagnostics;
+using System.Windows.Threading;
 
 namespace Launcher.Utils
 {

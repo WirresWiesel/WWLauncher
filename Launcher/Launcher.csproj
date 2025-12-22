@@ -14,6 +14,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Remove="Themes\DarkTheme.xaml" />
+    <Page Remove="Themes\LightTheme.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="WWLauncher.ico" />
   </ItemGroup>
 
@@ -21,6 +26,8 @@
     <Resource Include="Icon\WWLauncher.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Themes\DarkTheme.xaml" />
+    <Resource Include="Themes\LightTheme.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,12 +37,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Assets\Assetlist.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Update="Changelog.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Assets\" />
+  </ItemGroup>
+
+  <Target Name="CreateRequiredFolders" AfterTargets="Build">
+    <MakeDir Directories="$(TargetDir)Assets" />
+    <MakeDir Directories="$(TargetDir)Settings" />
+  </Target>
 
 </Project>

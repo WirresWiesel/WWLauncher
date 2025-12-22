@@ -1,4 +1,10 @@
-﻿Version 0.3
+﻿Version 0.4
+Added Button to open Settings Menu
+Added Slider to adjust the update time for program state
+Added Checkbox to activete or deactivate a dark mode
+No error when Assetlist.json or settings.json will be deleted
+
+Version 0.3
 Added Button to delete Assets
 
 Version 0.2
