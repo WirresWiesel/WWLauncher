@@ -7,9 +7,41 @@ namespace Launcher
     // define what is a program and which data it holds
     public class Programinfo : INotifyPropertyChanged
     {
-        public string Name { get; set; } = string.Empty;
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        [JsonIgnore]
+        public string? _state = null;
+        [JsonIgnore]
+        public string? _name = null;
+        [JsonIgnore]
+        public string? _exePath = null;
+
         public string ProcessName { get; set; } = string.Empty;
-        public string EXEPath { get; set; } = string.Empty;
+
+        public string Name
+        {
+            get => _name ?? string.Empty;
+            set
+            {
+                if (_name != value)
+                {
+                    _name = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Name)));
+                }
+            }
+        }
+        public string EXEPath
+        {
+            get => _exePath ?? string.Empty;
+            set
+            {
+                if (_exePath != value)
+                {
+                    _exePath = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(EXEPath)));
+                }
+            }
+        }
 
         [JsonIgnore]
         public string State
@@ -24,12 +56,10 @@ namespace Launcher
                 }
             }
         }
-        [JsonIgnore]
-        public string? _state = null;
+
         [JsonIgnore]
         public Process? ProcessInstance { get; set; }
 
-        public event PropertyChangedEventHandler? PropertyChanged;
 
     }
 }

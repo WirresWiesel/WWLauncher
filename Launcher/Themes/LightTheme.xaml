@@ -4,4 +4,6 @@
     <SolidColorBrush x:Key="WindowBackgroundBrush" Color="White"/>
     <SolidColorBrush x:Key="ForegroundBrush" Color="Black"/>
     <SolidColorBrush x:Key="Checkmark" Color="Black"/>
+    <SolidColorBrush x:Key="CheckBoxBackgroundBrush" Color="White"/>
+    <SolidColorBrush x:Key="TxtBoxBackgroundBrush" Color="White"/>
 </ResourceDictionary>

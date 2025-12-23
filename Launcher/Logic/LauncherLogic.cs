@@ -38,6 +38,7 @@ namespace Launcher.Logic
         public void UpdateLstProgram(System.Windows.Controls.ListBox lstProgram)
         {
             lstProgram.ItemsSource = _currentAsset?.ProgramList;
+            
         }
 
         public void StartProgram(Programinfo programinfo)

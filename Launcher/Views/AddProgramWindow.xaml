@@ -1,13 +1,12 @@
 ﻿<Window x:Class="Launcher.Views.AddProgramWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Programm hinzufügen"
+        Title="Add Programm"
         Background="{DynamicResource WindowBackgroundBrush}" Foreground="{DynamicResource ForegroundBrush}"
         Height="235"
         Width="360"
         WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize"
-        Icon="pack://application:,,,/Icon/WWLauncher.ico">
+        ResizeMode="NoResize">
 
     <Grid Margin="16">
         <Grid.RowDefinitions>
@@ -18,31 +17,34 @@
         </Grid.RowDefinitions>
 
         <!-- Pfad -->
-        <TextBlock Text="Programmdatei"
+        <TextBlock Text="Program Files"
                    FontWeight="SemiBold"
                    Margin="0,0,0,6"/>
 
         <DockPanel Grid.Row="1" Margin="0,0,0,12">
             <Button x:Name="BtnChoosePath"
-                    Content="Durchsuchen…"
+                    Content="Browse…"
                     DockPanel.Dock="Right"
                     Width="90"
+                    Height="30"
                     Margin="8,0,0,0"
                     Click="BtnChoosePath_Click"/>
 
             <TextBox x:Name="TxtPath"
                      IsReadOnly="True"
                      VerticalContentAlignment="Center"
-                     Padding="6"/>
+                     Padding="6"
+                     Background="{DynamicResource TxtBoxBackgroundBrush}"/>
         </DockPanel>
 
         <!-- Name -->
         <StackPanel Grid.Row="2" Margin="0,0,0,16">
-            <TextBlock Text="Anzeigename"
+            <TextBlock Text="Display Name"
                        FontWeight="SemiBold"
                        Margin="0,0,0,6"/>
             <TextBox x:Name="TxtBoxCustomName"
-                     Padding="6"/>
+                     Padding="6"
+                     Background="{DynamicResource TxtBoxBackgroundBrush}"/>
         </StackPanel>
 
         <!-- Buttons -->
@@ -51,14 +53,16 @@
                     HorizontalAlignment="Right">
 
             <Button x:Name="BtnCancel"
-                    Content="Abbrechen"
+                    Content="Cancel"
                     Width="90"
+                    Height="30"
                     Margin="0,0,8,0"
                     Click="BtnCancel_Click"/>
 
             <Button x:Name="BtnOk"
                     Content="OK"
                     Width="90"
+                    Height="30"
                     IsDefault="True"
                     Click="BtnOk_Click"/>
         </StackPanel>

@@ -15,34 +15,29 @@ using System.Windows.Shapes;
 namespace Launcher.Views
 {
     /// <summary>
-    /// Interaction logic for AddAssetWindow.xaml
+    /// Interaction logic for RequestWindow.xaml
     /// </summary>
-    public partial class AddAssetWindow : Window
+    public partial class RequestWindow : Window
     {
-        public string AssetName { get; private set; } = string.Empty;
+        public string Message { get; set; } = string.Empty;
 
-        public AddAssetWindow()
+        public RequestWindow(string message)
         {
             InitializeComponent();
 
-            TxtAssetName.Focus();
+            Message = message;
+            DataContext = this;
         }
 
-        private void BtnClick_OK(object sender, RoutedEventArgs e)
+        private void BtnClick_Delete(object sender, RoutedEventArgs e)
         {
-            AssetName = TxtAssetName.Text.Trim();
-            if (string.IsNullOrEmpty(AssetName))
-            {
-                MessageBox.Show("Please enter a valid asset name.", "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-
             DialogResult = true;
             Close();
         }
 
         private void BtnClick_Cancel(object sender, RoutedEventArgs e)
         {
+            DialogResult = false;
             Close();
         }
     }

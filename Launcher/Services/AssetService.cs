@@ -33,11 +33,29 @@ namespace Launcher.Services
             File.WriteAllText(Filepath, "[]");
         }
 
-        public void CreateAsset(string assetName)
+        public Asset CreateAsset(string assetName)
         {
             Asset asset = new Asset();
             asset.Name = assetName;
             Assets.Add(asset);
+            this.SaveAssetList();
+            return asset;
+        }
+
+        public void EditAsset(Asset asset, string? assetName, string? exePath)
+        {
+            if (asset != null)
+            {
+                if (assetName != null)
+                {
+                    asset.Name = assetName;
+                }
+
+                if (exePath != null)
+                {
+                    asset.EXEPath = exePath;
+                }
+            }
             this.SaveAssetList();
         }
 

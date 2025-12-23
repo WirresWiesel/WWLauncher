@@ -1,13 +1,13 @@
 ﻿ToDo´s----------------------------
+- Clean up MainWindow.xaml.cs ater these two points!!!
+- Make the Path required for a Program
 - Size of the Program Column should resize after adding a new Program
-- CheckBox checkmark switch to white - only posible with a template
-- Dropdown ComboBox redo colors of the active and inactive assets
 
 Bugs------------------------------
 
 solved Bugs-----------------------
 Bug fixed v0.4
-- After deleting Assetlist no empty .json is created
+- After deleting Assetlist no empty .json will be created
 Bug fixed v0.3
 - Canceling while adding Asset leaves empty Asset in the list
 Bug fixed v0.2
@@ -15,13 +15,23 @@ Bug fixed v0.2
 
 new Features----------------------
 v0.4
+- List View and Dropdown Menu are sorted ascending
 - Settings Window/Menu - actually only for Dark/Light Mode
 - Settings.json added to save Settings
 - Dark/Light Mode can be set in Settings
 - Update Time can be set in Settings
+- Renaming of programs and assets
 v0.3
 - possibility to delete Assets
 
-Fixes-----------------------------
+Changes----------------------------
+v0.4
+- You get asked if you realy want to delete the program or asset
+- Changed and unified background color for Text and Check boxes
+- Some tweaks to unify the size of buttons and windows
+- Checkbox to start Main Game can not set when there is no Path
+- Dropdown ComboBox changed colors of inactive assets
+- Buttons to interact with a single Program no more available when there is no program but one was selected before
+- No more able to add a Program when there is no asset chosen
 v0.3
 - Button for adding program move to the other buttons for the program handling

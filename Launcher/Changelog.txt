@@ -3,6 +3,10 @@ Added Button to open Settings Menu
 Added Slider to adjust the update time for program state
 Added Checkbox to activete or deactivate a dark mode
 No error when Assetlist.json or settings.json will be deleted
+Unified background colors and button sizes
+Checkbox to start Main Game can not set when there is no Path
+Dropdown ComboBox changed colors of inactive assets
+Request before deleting anything
 
 Version 0.3
 Added Button to delete Assets

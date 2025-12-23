@@ -54,7 +54,8 @@
             <Label Content="Assets"
                    HorizontalContentAlignment="Left"
                    VerticalContentAlignment="Bottom"
-                   Foreground="{DynamicResource ForegroundBrush}"/>
+                   Foreground="{DynamicResource ForegroundBrush}"
+                   FontWeight="SemiBold"/>
             <ComboBox x:Name="ComboAssets"
                       Width="180"
                       DisplayMemberPath="Name"
@@ -62,26 +63,19 @@
                       HorizontalAlignment="Left"
                       Text="Choose Asset ..."
                       Margin="0,0,0,6"
-                      IsEditable="True">
-                      <!--Foreground="{DynamicResource ComboBoxText}" Background="{DynamicResource WindowBackgroundBrush}"-->
-                <ComboBox.Resources>
-                    <Style TargetType="TextBox">
-                        <!--Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/-->
-                        <!--Setter Property="Background" Value="{DynamicResource WindowBackgroundBrush}"/-->
-                    </Style>
-                </ComboBox.Resources>
+                      IsEditable="True"
+                      ItemsSource="{Binding Assets}">
 
                 <ComboBox.ItemContainerStyle>
                     <Style TargetType="ComboBoxItem">
-                        <!--Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
-                        <Setter Property="Background" Value="{DynamicResource WindowBackgroundBrush}"/-->
+                        <Setter Property="Background" Value="{DynamicResource ComboBoxNoneActiveItem}"/>
                     </Style>
                 </ComboBox.ItemContainerStyle>
             </ComboBox>
 
             <CheckBox x:Name="ChkBoxStartMaingame"
                     Content="start with Main Game"
-                    Foreground="{DynamicResource ForegroundBrush}" Background="{DynamicResource WindowBackgroundBrush}"/>
+                    Foreground="{DynamicResource ForegroundBrush}" Background="{DynamicResource CheckBoxBackgroundBrush}"/>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                 <Ellipse x:Name="EllipseMainGameSet"
                          Width="16"
@@ -99,43 +93,55 @@
             <Button x:Name="BtnStartProgramAll"
                     Content="Start Asset"
                     Click="BtnClick_StartProgramAll"
-                    Margin="0,0,0,6"/>
+                    Margin="0,0,0,6"
+                    IsEnabled="False"/>
             <Button x:Name="BtnStopProgramAll"
                     Content="Stop Asset"
                     Click="BtnClick_StopProgramAll"
-                    Margin="0,0,0,6"/>
+                    Margin="0,0,0,6"
+                    IsEnabled="False"/>
+            <Button x:Name="BtnEditAsset"
+                    Content="Edit Asset"
+                    Click="BtnClick_EditAsset"
+                    Margin="0,0,0,6"
+                    IsEnabled="False"/>
             <Button x:Name="BtnDeleteAsset"
                     Content="Delete Asset"
                     Click="BtnClick_DeleteAsset"
-                    Margin="0,0,0,6"/>
+                    Margin="0,0,0,6"
+                    IsEnabled="False"/>
         </StackPanel>
 
         <!-- Program Management Buttons -->
         <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="3,0,3,0">
-            <Label Content="Edit Assets"
+            <Label Content=""
                    HorizontalContentAlignment="Left"
                    VerticalContentAlignment="Bottom"
-                   Foreground="{DynamicResource ForegroundBrush}"/>
+                   Foreground="{DynamicResource ForegroundBrush}"
+                   FontWeight="SemiBold"/>
             <Button x:Name="BtnCreateAsset"
                     Content="Create new Asset"
                     Click="BtnClick_CreateNewAsset"
-                    Margin="0,0,0,6"/>
-            <Button x:Name="BtnAddMaingame"
-                    Content="Choose Main Game"
-                    Click="BtnClick_AddMaingame"
                     Margin="0,0,0,6"/>
         </StackPanel>
 
         <!-- Program Control Buttons -->
         <StackPanel Grid.Row="1" Grid.Column="2" VerticalAlignment="Top" Margin="3,0,3,0">
-            <Label Content="Edit Programs"
+            <Label Content="Programs"
                    HorizontalContentAlignment="Left"
                    VerticalContentAlignment="Bottom"
-                   Foreground="{DynamicResource ForegroundBrush}"/>
+                   Foreground="{DynamicResource ForegroundBrush}"
+                   FontWeight="SemiBold"/>
             <Button x:Name="BtnAddProgram"
                     Content="Add Program"
                     Click="BtnClick_AddProgram"
-                    Margin="0,0,0,6"/>
+                    Margin="0,0,0,6"
+                    IsEnabled="False"/>
+            <Button x:Name="BtnEditProgram"
+                    Content="Edit Program"
+                    Click="BtnClick_EditProgram"
+                    Margin="0,0,0,6"
+                    IsEnabled="False"/>
             <Button x:Name="BtnStartProgramSingle"
                     Content="Start Program"
                     Click="BtnClick_StartProgramSingle"

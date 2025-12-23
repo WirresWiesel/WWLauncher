@@ -4,6 +4,9 @@ using Launcher.Services;
 using Launcher.Utils;
 using Microsoft.VisualBasic;
 using System.Windows;
+using System.Windows.Data;
+using System.ComponentModel;
+using System.Windows.Controls;
 
 namespace Launcher.Views
 {
@@ -23,7 +26,11 @@ namespace Launcher.Views
             _launcherLogic = new LauncherLogic();
             _assetService = new AssetService();
             _settingsService = new SettingsService();
-            this.InitializeLauncher();
+            
+            Loaded += (_, _) =>
+            {
+                InitializeLauncher();
+            };
         }
 
         private void InitializeLauncher()
@@ -46,6 +53,10 @@ namespace Launcher.Views
             if (_tmpAsset != null)
             {
                 BtnAddProgram.IsEnabled = true;
+                BtnDeleteAsset.IsEnabled = true;
+                BtnStartProgramAll.IsEnabled = true;
+                BtnStopProgramAll.IsEnabled = true;
+                BtnEditAsset.IsEnabled = true;
             }
         }
 
@@ -63,36 +74,26 @@ namespace Launcher.Views
             }
         }
 
-        private void BtnClick_AddMaingame(object sender, RoutedEventArgs e)
-        {
-            var window = new Views.AddMainGameWindow();
-            window.ShowDialog();
-
-            if (window.DialogResult == true && window.Result != null)
-            {
-                _launcherLogic?.AddMaingameToCurrentAsset(window.Result);
-                _assetService.SaveAssetList();
-            }
-            this.UpdateVisuals();
-        }
-
         private void BtnClick_RemoveProgram(object sender, RoutedEventArgs e)
-        {
+        { 
             var selectedProgram = LstProgram.SelectedItem as Programinfo;
-            var currentAsset = ComboAssets.SelectedItem as Asset;
-            if (selectedProgram != null && currentAsset != null)
+            var confirmWindow = new RequestWindow($"Do you realy want to delete the program?\n -->{selectedProgram!.Name}");
+            if (confirmWindow.ShowDialog() == true)
             {
-                AssetService.RemoveProgramFromAsset(currentAsset, selectedProgram);
-                _launcherLogic?.UpdateLstProgram(LstProgram);
-                _assetService.SaveAssetList();
+                var currentAsset = ComboAssets.SelectedItem as Asset;
+                if (selectedProgram != null && currentAsset != null)
+                {
+                    AssetService.RemoveProgramFromAsset(currentAsset, selectedProgram);
+                    _launcherLogic?.UpdateLstProgram(LstProgram);
+                    CheckProgramButtons();
+                    _assetService.SaveAssetList();
+                }
             }
         }
 
         private void LstSelectionChanged_LstProgram(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            BtnDeleteProgram.IsEnabled = true;
-            BtnStartProgramSingle.IsEnabled = true;
-            BtnStopProgramSingle.IsEnabled = true;
+            CheckProgramButtons();
         }
 
         private void BtnClick_StartProgramSingle(object sender, RoutedEventArgs e)
@@ -173,28 +174,40 @@ namespace Launcher.Views
             if (_booleanState)
             {
                 TxtBlock_StateMaingamePath.Text = "Main Game is set";
+                ChkBoxStartMaingame.IsEnabled = true;
+                ChkBoxStartMaingame.Opacity = 1;
             }
             else
             {
                 TxtBlock_StateMaingamePath.Text = "Main Game is not set";
+                ChkBoxStartMaingame.IsEnabled = false;
+                ChkBoxStartMaingame.Opacity = 0.3;
             }
+            this.SortListView(LstProgram);
+            this.SortComboBox(ComboAssets);
         }
 
         private void BtnClick_CreateNewAsset(object sender, RoutedEventArgs e)
         {
             string assetName = string.Empty;
+            string exePath = string.Empty;
+            Asset newAsset;
 
-            var addAssetWindow = new AddAssetWindow()
+            var editAssetWindow = new EditWindow(assetName, null)
             {
                 Owner = this
             };
 
-            if (addAssetWindow.ShowDialog() == true)
-                assetName = addAssetWindow.AssetName;
+            if (editAssetWindow.ShowDialog() == true)
+            {
+                assetName = editAssetWindow.NewName;
+                exePath = editAssetWindow.NewPath;
+            }
 
             if (!(assetName == string.Empty))
             { 
-                _assetService.CreateAsset(assetName);
+                newAsset = _assetService.CreateAsset(assetName);
+                _assetService.EditAsset(newAsset, assetName, exePath);
                 this.InitializeLauncher();
 
                 // Make the ComboBox select the last created Asset
@@ -204,12 +217,24 @@ namespace Launcher.Views
                     ComboAssets.SelectedItem = _asset;
                 }
             }
+            UpdateVisuals();
         }
 
         private void BtnClick_DeleteAsset(object sender, RoutedEventArgs e)
         {
-            _assetService.DeleteAsset(ComboAssets.SelectedItem as Asset);
-            this.InitializeLauncher();
+            string currentAssetName = string.Empty;
+            Asset? currentAsset = ComboAssets.SelectedItem as Asset;
+            if (currentAsset != null)
+            {
+                currentAssetName = currentAsset.Name;
+            }
+
+            var requestWindow = new RequestWindow($"Do you realy want to delete this asset?\n --> {currentAssetName}");
+            if (requestWindow.ShowDialog() == true)
+            {
+                _assetService.DeleteAsset(currentAsset);
+                this.InitializeLauncher();
+            }
         }
 
         private void BtnClick_OpenMenuSettings(object sender, RoutedEventArgs e)
@@ -225,6 +250,74 @@ namespace Launcher.Views
                 _settingsService.SaveSettings();
                 _launcherLogic?.SetTheme(_settingsService.Settings);
                 _launcherLogic?.SetStatusUpdateTimerInterval(_settingsService.Settings.StatusUpdateInterval);
+            }
+        }
+
+        private void CheckProgramButtons()
+        {
+            if (LstProgram.Items.Count > 0)
+            {
+                BtnDeleteProgram.IsEnabled = true;
+                BtnStartProgramSingle.IsEnabled = true;
+                BtnStopProgramSingle.IsEnabled = true;
+                BtnEditProgram.IsEnabled = true;
+            }
+            else
+            {
+                BtnDeleteProgram.IsEnabled = false;
+                BtnStartProgramSingle.IsEnabled = false;
+                BtnStopProgramSingle.IsEnabled = false;
+                BtnEditProgram.IsEnabled = false;
+            }
+        }
+
+        private void BtnClick_EditAsset(object sender, RoutedEventArgs e)
+        {
+            var asset = ComboAssets.SelectedItem as Asset;
+            var index = ComboAssets.SelectedIndex;
+            var editWindow = new EditWindow(asset!.Name, asset!.EXEPath);
+            if (editWindow.ShowDialog() == true)
+            {
+                asset.EXEPath = editWindow.NewPath;
+                asset.Name = editWindow.NewName;
+                ComboAssets.Text = asset.Name;
+            }
+            UpdateVisuals();
+        }
+
+        private void BtnClick_EditProgram(object sender, RoutedEventArgs e)
+        {
+            var program = LstProgram.SelectedItem as Programinfo;
+            var editWindow = new EditWindow(program!.Name, program!.EXEPath);
+            if (editWindow.ShowDialog() == true)
+            {
+                if (program != null)
+                {
+                    program.EXEPath = editWindow.NewPath;
+                    program.Name = editWindow.NewName;
+                }
+            }
+            _assetService.SaveAssetList();
+            UpdateVisuals();
+        }
+
+        private void SortListView(ListView listView)
+        {
+            var _lstProgramView = CollectionViewSource.GetDefaultView(listView.ItemsSource);
+            if (_lstProgramView != null)
+            {
+                _lstProgramView.SortDescriptions.Clear();
+                _lstProgramView.SortDescriptions.Add(new SortDescription(nameof(Programinfo.Name), ListSortDirection.Ascending));
+            }
+        }
+
+        private void SortComboBox(ComboBox comboBox)
+        {
+            var _comboBox = CollectionViewSource.GetDefaultView(ComboAssets.ItemsSource);
+            if (_comboBox != null)
+            {
+                _comboBox.SortDescriptions.Clear();
+                _comboBox.SortDescriptions.Add(new SortDescription(nameof(Asset.Name), ListSortDirection.Ascending));
             }
         }
     }
