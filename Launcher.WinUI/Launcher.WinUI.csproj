@@ -11,6 +11,7 @@
     <UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
     <Nullable>enable</Nullable>
+    <ApplicationIcon>WWLauncher.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Assetlist\**" />
@@ -95,6 +96,11 @@
   </PropertyGroup>
   <ItemGroup>
     <PRIResource Remove="Assetlist\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="WWLauncher.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Resources\Styles\ListViewStyles.xaml">

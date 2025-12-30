@@ -29,21 +29,21 @@
     <AppXManifest Include="C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.WinUI\bin\x64\Debug\net9.0-windows10.0.19041.0\win-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2025-12-30T20:04:45.015</Modified>
+      <Modified>2025-12-30T20:12:59.363</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.WinUI\bin\x64\Debug\net9.0-windows10.0.19041.0\win-x64\Launcher.WinUI.runtimeconfig.json">
       <PackagePath>Launcher.WinUI.runtimeconfig.json</PackagePath>
-      <Modified>2025-12-30T20:04:44.671</Modified>
+      <Modified>2025-12-30T20:12:58.989</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.WinUI\obj\x64\Debug\net9.0-windows10.0.19041.0\win-x64\apphost.exe">
       <PackagePath>Launcher.WinUI.exe</PackagePath>
-      <Modified>2025-12-30T20:04:44.438</Modified>
+      <Modified>2025-12-30T20:12:58.628</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.WinUI\obj\x64\Debug\net9.0-windows10.0.19041.0\win-x64\Launcher.WinUI.dll">
       <PackagePath>Launcher.WinUI.dll</PackagePath>
-      <Modified>2025-12-30T20:04:44.436</Modified>
+      <Modified>2025-12-30T20:12:58.617</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Pasca\.nuget\packages\microsoft.netcore.app.runtime.win-x64\9.0.11\runtimes\win-x64\lib\net9.0\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -943,7 +943,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.WinUI\bin\x64\Debug\net9.0-windows10.0.19041.0\win-x64\Launcher.WinUI.deps.json">
       <PackagePath>Launcher.WinUI.deps.json</PackagePath>
-      <Modified>2025-12-30T20:04:44.659</Modified>
+      <Modified>2025-12-30T20:12:58.975</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.WinUI\Assets\LargeTile.scale-100.png">
       <PackagePath>Assets\LargeTile.scale-100.png</PackagePath>
@@ -1163,7 +1163,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.WinUI\bin\x64\Debug\net9.0-windows10.0.19041.0\win-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2025-12-30T20:04:44.798</Modified>
+      <Modified>2025-12-30T20:12:59.123</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
