@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Launcher.WinUI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+679d1236060884a97154fda5580495ab3ecc1cfd")]
 [assembly: System.Reflection.AssemblyProductAttribute("Launcher.WinUI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Launcher.WinUI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
