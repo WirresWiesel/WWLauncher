@@ -1,0 +1,20 @@
+﻿Launcher
+
+
+winexe
+C#
+.cs
+C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher\obj\Release\net8.0-windows\
+Launcher
+none
+false
+TRACE;RELEASE;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
+C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher\App.xaml
+618363329
+1-805258127
+20-1847966771
+198-2136442823
+Views\AddAssetWindow.xaml;Views\AddProgramWindow.xaml;Views\EditWindow.xaml;Views\MainWindow.xaml;Views\MenuSettingsWindow.xaml;Views\RequestWindow.xaml;
+
+False
+

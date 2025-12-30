@@ -1,5 +1,5 @@
-﻿using Launcher.Models;
-using Launcher.Services;
+﻿using Launcher.Core.Models;
+using Launcher.Core.Services;
 using System.Diagnostics;
 using Launcher.Utils;
 using System.IO;

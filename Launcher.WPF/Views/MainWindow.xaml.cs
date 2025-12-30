@@ -1,6 +1,6 @@
 ﻿using Launcher.Logic;
-using Launcher.Models;
-using Launcher.Services;
+using Launcher.Core.Models;
+using Launcher.Core.Services;
 using Launcher.Utils;
 using System.Windows;
 using System.Windows.Data;
@@ -35,7 +35,7 @@ namespace Launcher.Views
         private void InitializeLauncher()
         {
             _settingsService.GetSettings();
-            ComboAssets.ItemsSource = _assetService.GetAssetList();
+            ComboAssets.ItemsSource = _assetService.Assets;
             _launcherLogic?.SetTheme(_settingsService.Settings);
             _launcherLogic?.SetStatusUpdateTimerInterval(_settingsService.Settings.StatusUpdateInterval);
             this.UpdateVisuals();
@@ -69,7 +69,7 @@ namespace Launcher.Views
                 _launcherLogic?.AddProgramToCurrentAsset(window.Result);
                 _launcherLogic?.UpdateLstProgram(LstProgram);
                 _launcherLogic?.UpdateProgramStates();
-                _assetService.SaveAssetList();
+                _assetService.SaveInternalAssetList();
             }
         }
 
@@ -85,7 +85,7 @@ namespace Launcher.Views
                     AssetService.RemoveProgramFromAsset(currentAsset, selectedProgram);
                     _launcherLogic?.UpdateLstProgram(LstProgram);
                     CheckProgramButtons();
-                    _assetService.SaveAssetList();
+                    _assetService.SaveInternalAssetList();
                 }
             }
         }
@@ -104,7 +104,7 @@ namespace Launcher.Views
             if (program != null && program.State != "Running")
                 _launcherLogic?.StartProgram(program);
 
-            _assetService.SaveAssetList();      // needs to be saved because to save the ProcessName to the .json
+            _assetService.SaveInternalAssetList();      // needs to be saved because to save the ProcessName to the .json
         }
 
         private void BtnClick_StopProgramSingle(object sender, RoutedEventArgs e)
@@ -132,7 +132,7 @@ namespace Launcher.Views
                     _launcherLogic?.StartProgram(program);
             }
 
-            _assetService.SaveAssetList();      // needs to be saved because to save the ProcessName to the .json
+            _assetService.SaveInternalAssetList();      // needs to be saved because to save the ProcessName to the .json
         }
 
         private void BtnClick_StopProgramAll(object sender, RoutedEventArgs e)
@@ -296,7 +296,7 @@ namespace Launcher.Views
                     program.Name = editWindow.NewName;
                 }
             }
-            _assetService.SaveAssetList();
+            _assetService.SaveInternalAssetList();
             UpdateVisuals();
         }
 

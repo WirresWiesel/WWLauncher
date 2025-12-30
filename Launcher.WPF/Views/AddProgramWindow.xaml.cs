@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using Launcher.Core.Models;
 
 namespace Launcher.Views
 {

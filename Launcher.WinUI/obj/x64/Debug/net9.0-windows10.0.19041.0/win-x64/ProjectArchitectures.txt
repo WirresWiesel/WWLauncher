@@ -1,0 +1,1 @@
+C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.WinUI\Launcher.WinUI.csproj;x64

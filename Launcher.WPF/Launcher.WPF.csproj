@@ -17,7 +17,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\WWLauncher\Launcher.Core\Launcher.Core.csproj" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Launcher.Core\Launcher.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,7 +45,7 @@
   </ItemGroup>
 
   <Target Name="CreateRequiredFolders" AfterTargets="Build">
-    <MakeDir Directories="$(TargetDir)Assets" />
+    <MakeDir Directories="$(TargetDir)Assetlist" />
     <MakeDir Directories="$(TargetDir)Settings" />
   </Target>
 

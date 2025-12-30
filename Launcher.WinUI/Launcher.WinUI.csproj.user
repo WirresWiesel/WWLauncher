@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ActiveDebugProfile>Launcher.WinUI (Package)</ActiveDebugProfile>
+    <Source>C:\Users\Pasca\Downloads\WWLauncher.png</Source>
+    <SmallTileSource>C:\Users\Pasca\Downloads\WWLauncher.png</SmallTileSource>
+    <MediumTileSource>C:\Users\Pasca\Downloads\WWLauncher.png</MediumTileSource>
+    <WideTileSource>C:\Users\Pasca\Downloads\WWLauncher.png</WideTileSource>
+    <LargeTileSource>C:\Users\Pasca\Downloads\WWLauncher.png</LargeTileSource>
+    <AppIconSource>C:\Users\Pasca\Downloads\WWLauncher.png</AppIconSource>
+    <SplashScreenSource>C:\Users\Pasca\Downloads\WWLauncher.png</SplashScreenSource>
+    <PackageLogoSource>C:\Users\Pasca\Downloads\WWLauncher.png</PackageLogoSource>
+    <_LastSelectedProfileId>C:\Users\Pasca\Documents\Visual Studio 2022\Projects\WWLauncher\Launcher.WinUI\Properties\PublishProfiles\win-x64.pubxml</_LastSelectedProfileId>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Update="App.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Update="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </None>
+    <Page Update="Resources\Styles\ListViewStyles.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Styles\ButtonStyles.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\DashboardPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\AssetsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

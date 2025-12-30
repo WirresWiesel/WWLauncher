@@ -1,0 +1,20 @@
+﻿Version 0.4
+Added Button to open Settings Menu
+Added Slider to adjust the update time for program state
+Added Checkbox to activete or deactivate a dark mode
+No error when Assetlist.json or settings.json will be deleted
+Unified background colors and button sizes
+Checkbox to start Main Game can not set when there is no Path
+Dropdown ComboBox changed colors of inactive assets
+Request before deleting anything
+
+Version 0.3
+Added Button to delete Assets
+
+Version 0.2
+Visual updates after Main Games is selected and set
+Redone the Main Game selection window
+Name of .exe does not overwrite Asset.Name anymore
+
+Version 0.1
+Basic functions -> first release state

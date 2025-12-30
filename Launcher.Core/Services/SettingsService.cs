@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Text.Json;
 
-namespace Launcher.Services
+namespace Launcher.Core.Services
 {
     public class SettingsService
     {

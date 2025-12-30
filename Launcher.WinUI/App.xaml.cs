@@ -15,6 +15,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Launcher.WinUI.Logic;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -26,7 +27,7 @@ namespace Launcher.WinUI
     /// </summary>
     public partial class App : Application
     {
-        private Window? _window;
+        public Window? _window { get; private set; }
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
