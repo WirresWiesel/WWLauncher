@@ -2,7 +2,6 @@
 using Launcher.Models;
 using Launcher.Services;
 using Launcher.Utils;
-using Microsoft.VisualBasic;
 using System.Windows;
 using System.Windows.Data;
 using System.ComponentModel;

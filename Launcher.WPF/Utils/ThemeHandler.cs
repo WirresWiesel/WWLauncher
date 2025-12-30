@@ -13,14 +13,14 @@ namespace Launcher.Utils
         {
             var Theme = "DarkTheme.xaml";
             Application.Current.Resources.MergedDictionaries.Clear();
-            Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri($"/Launcher;component/Themes/{Theme}", UriKind.Relative) });
+            Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri($"/Launcher.WPF;component/Themes/{Theme}", UriKind.Relative) });
         }
 
         public void SetLightMode()
         {
             var Theme = "LightTheme.xaml";
             Application.Current.Resources.MergedDictionaries.Clear();
-            Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri($"/Launcher;component/Themes/{Theme}", UriKind.Relative) });
+            Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri($"/Launcher.WPF;component/Themes/{Theme}", UriKind.Relative) });
         }
     }
 }

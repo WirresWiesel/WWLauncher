@@ -6,7 +6,7 @@ using System.Diagnostics;
 namespace Launcher.Services
 {
     // Defines methods for Asset handling
-    class AssetService
+    public class AssetService
     {
         private static string Filepath = "Assets/Assetlist.json";
         public List<Models.Asset> Assets = new List<Models.Asset>();

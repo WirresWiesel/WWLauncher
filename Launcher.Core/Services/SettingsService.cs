@@ -10,7 +10,7 @@ using System.Text.Json;
 
 namespace Launcher.Services
 {
-    internal class SettingsService
+    public class SettingsService
     {
         private static string Filepath = "Settings/Setting.json"; 
         public Settings.Settings Settings { get; set; } = new Settings.Settings();
