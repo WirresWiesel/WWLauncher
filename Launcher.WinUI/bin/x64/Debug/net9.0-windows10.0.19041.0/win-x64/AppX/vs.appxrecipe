@@ -9,7 +9,7 @@
     <SolutionConfiguration>Debug|x64</SolutionConfiguration>
     <PackageArchitecture>x64</PackageArchitecture>
     <PackageIdentityName>d7e85734-edeb-44cb-b3d5-54e2726d24ca</PackageIdentityName>
-    <PackageIdentityPublisher>CN=Pasca</PackageIdentityPublisher>
+    <PackageIdentityPublisher>CN=WirresWiesel</PackageIdentityPublisher>
     <IntermediateOutputPath>C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.WinUI\obj\x64\Debug\net9.0-windows10.0.19041.0\win-x64\</IntermediateOutputPath>
     <RemoteDeploymentType>CopyToDevice</RemoteDeploymentType>
     <PackageRegistrationPath>
@@ -18,32 +18,32 @@
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>D:\Windows Kits\10\</WindowsSdkPath>
     <LayoutDir>C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.WinUI\bin\x64\Debug\net9.0-windows10.0.19041.0\win-x64\AppX</LayoutDir>
-    <RegisteredManifestChecksum>92B73EE9CBD654E1C701E1FA3AC19CC30DD784564B49337B25E2C4E6F1B592AF</RegisteredManifestChecksum>
-    <RegisteredPackageMoniker>d7e85734-edeb-44cb-b3d5-54e2726d24ca_1.0.0.0_x64__kevnmfzdmn3ha</RegisteredPackageMoniker>
-    <RegisteredUserModeAppID>d7e85734-edeb-44cb-b3d5-54e2726d24ca_kevnmfzdmn3ha!App</RegisteredUserModeAppID>
+    <RegisteredManifestChecksum>8EE39030C1775FEFE89BD563DBF28BF9FF8853C9A6CFB3423D328AB811186C1F</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>d7e85734-edeb-44cb-b3d5-54e2726d24ca_0.0.1.0_x64__3creyze2y1se0</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>d7e85734-edeb-44cb-b3d5-54e2726d24ca_3creyze2y1se0!App</RegisteredUserModeAppID>
     <RegisteredPackageID>d7e85734-edeb-44cb-b3d5-54e2726d24ca</RegisteredPackageID>
-    <RegisteredPackagePublisher>CN=Pasca</RegisteredPackagePublisher>
-    <RegisteredVersion>1.0.0.0</RegisteredVersion>
+    <RegisteredPackagePublisher>CN=WirresWiesel</RegisteredPackagePublisher>
+    <RegisteredVersion>0.0.1.0</RegisteredVersion>
   </PropertyGroup>
   <ItemGroup>
     <AppXManifest Include="C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.WinUI\bin\x64\Debug\net9.0-windows10.0.19041.0\win-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2025-12-30T20:12:59.363</Modified>
+      <Modified>2025-12-30T21:13:35.101</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.WinUI\bin\x64\Debug\net9.0-windows10.0.19041.0\win-x64\Launcher.WinUI.runtimeconfig.json">
       <PackagePath>Launcher.WinUI.runtimeconfig.json</PackagePath>
-      <Modified>2025-12-30T20:12:58.989</Modified>
+      <Modified>2025-12-30T21:13:34.936</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.WinUI\obj\x64\Debug\net9.0-windows10.0.19041.0\win-x64\apphost.exe">
       <PackagePath>Launcher.WinUI.exe</PackagePath>
-      <Modified>2025-12-30T20:12:58.628</Modified>
+      <Modified>2025-12-30T21:13:34.794</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.WinUI\obj\x64\Debug\net9.0-windows10.0.19041.0\win-x64\Launcher.WinUI.dll">
       <PackagePath>Launcher.WinUI.dll</PackagePath>
-      <Modified>2025-12-30T20:12:58.617</Modified>
+      <Modified>2025-12-30T21:13:34.791</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Pasca\.nuget\packages\microsoft.netcore.app.runtime.win-x64\9.0.11\runtimes\win-x64\lib\net9.0\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -935,7 +935,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.Core\bin\Debug\net8.0\Launcher.Core.dll">
       <PackagePath>Launcher.Core.dll</PackagePath>
-      <Modified>2025-12-30T20:02:15.826</Modified>
+      <Modified>2025-12-30T20:57:52.507</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Pasca\.nuget\packages\microsoft.web.webview2\1.0.3179.45\lib_manual\net8.0-windows10.0.17763.0\Microsoft.Web.WebView2.Core.Projection.dll">
       <PackagePath>Microsoft.Web.WebView2.Core.Projection.dll</PackagePath>
@@ -943,7 +943,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.WinUI\bin\x64\Debug\net9.0-windows10.0.19041.0\win-x64\Launcher.WinUI.deps.json">
       <PackagePath>Launcher.WinUI.deps.json</PackagePath>
-      <Modified>2025-12-30T20:12:58.975</Modified>
+      <Modified>2025-12-30T21:13:34.935</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.WinUI\Assets\LargeTile.scale-100.png">
       <PackagePath>Assets\LargeTile.scale-100.png</PackagePath>
@@ -1163,7 +1163,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.WinUI\bin\x64\Debug\net9.0-windows10.0.19041.0\win-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2025-12-30T20:12:59.123</Modified>
+      <Modified>2025-12-30T21:13:34.968</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

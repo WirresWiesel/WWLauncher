@@ -9,8 +9,8 @@
 
   <Identity
     Name="d7e85734-edeb-44cb-b3d5-54e2726d24ca"
-    Publisher="CN=Pasca"
-    Version="1.0.0.0" />
+    Publisher="CN=WirresWiesel"
+    Version="0.0.1.0" />
 
   <mp:PhoneIdentity PhoneProductId="d7e85734-edeb-44cb-b3d5-54e2726d24ca" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 

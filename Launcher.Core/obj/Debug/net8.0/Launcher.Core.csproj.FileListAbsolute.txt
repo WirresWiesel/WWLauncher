@@ -22,3 +22,4 @@ C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.Core\obj\
 C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.Core\obj\Debug\net8.0\refint\Launcher.Core.dll
 C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.Core\obj\Debug\net8.0\Launcher.Core.pdb
 C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.Core\obj\Debug\net8.0\ref\Launcher.Core.dll
+C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.Core\obj\Debug\net8.0\Launcher.Core.sourcelink.json

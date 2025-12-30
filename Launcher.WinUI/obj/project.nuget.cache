@@ -1,11 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "rqKrEnoVoWE=",
+  "dgSpecHash": "XszvMeYI3eA=",
   "success": true,
   "projectFilePath": "C:\\Users\\Pasca\\Documents\\Visual Studio 2022\\Projects\\Launcher\\Launcher.WinUI\\Launcher.WinUI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Pasca\\.nuget\\packages\\communitytoolkit.mvvm\\8.4.0\\communitytoolkit.mvvm.8.4.0.nupkg.sha512",
-    "C:\\Users\\Pasca\\.nuget\\packages\\microsoft.net.illink.tasks\\9.0.11\\microsoft.net.illink.tasks.9.0.11.nupkg.sha512",
     "C:\\Users\\Pasca\\.nuget\\packages\\microsoft.web.webview2\\1.0.3179.45\\microsoft.web.webview2.1.0.3179.45.nupkg.sha512",
     "C:\\Users\\Pasca\\.nuget\\packages\\microsoft.windows.sdk.buildtools\\10.0.26100.7175\\microsoft.windows.sdk.buildtools.10.0.26100.7175.nupkg.sha512",
     "C:\\Users\\Pasca\\.nuget\\packages\\microsoft.windows.sdk.buildtools.msix\\1.7.20250829.1\\microsoft.windows.sdk.buildtools.msix.1.7.20250829.1.nupkg.sha512",

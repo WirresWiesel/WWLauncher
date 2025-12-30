@@ -18,12 +18,6 @@
           "buildTransitive/CommunityToolkit.Mvvm.targets": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.11": {
-        "type": "package",
-        "build": {
-          "build/Microsoft.NET.ILLink.Tasks.props": {}
-        }
-      },
       "Microsoft.Web.WebView2/1.0.3179.45": {
         "type": "package",
         "build": {
@@ -399,12 +393,6 @@
           "buildTransitive/CommunityToolkit.Mvvm.targets": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.11": {
-        "type": "package",
-        "build": {
-          "build/Microsoft.NET.ILLink.Tasks.props": {}
-        }
-      },
       "Microsoft.Web.WebView2/1.0.3179.45": {
         "type": "package",
         "native": {
@@ -739,12 +727,6 @@
           "buildTransitive/CommunityToolkit.Mvvm.targets": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.11": {
-        "type": "package",
-        "build": {
-          "build/Microsoft.NET.ILLink.Tasks.props": {}
-        }
-      },
       "Microsoft.Web.WebView2/1.0.3179.45": {
         "type": "package",
         "native": {
@@ -1077,12 +1059,6 @@
         },
         "build": {
           "buildTransitive/CommunityToolkit.Mvvm.targets": {}
-        }
-      },
-      "Microsoft.NET.ILLink.Tasks/9.0.11": {
-        "type": "package",
-        "build": {
-          "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
       "Microsoft.Web.WebView2/1.0.3179.45": {
@@ -1444,57 +1420,6 @@
         "lib/netstandard2.1/CommunityToolkit.Mvvm.dll",
         "lib/netstandard2.1/CommunityToolkit.Mvvm.pdb",
         "lib/netstandard2.1/CommunityToolkit.Mvvm.xml"
-      ]
-    },
-    "Microsoft.NET.ILLink.Tasks/9.0.11": {
-      "sha512": "vvB9rtDmWaXgYkViT00KORBVmA3pcYsHlgd9vOPqL9sf5bKy3rvLMF1+sI1uUfVj28S3itirHlHmX5/kcpZKNw==",
-      "type": "package",
-      "path": "microsoft.net.illink.tasks/9.0.11",
-      "hasTools": true,
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "LICENSE.TXT",
-        "Sdk/Sdk.props",
-        "THIRD-PARTY-NOTICES.TXT",
-        "analyzers/dotnet/cs/ILLink.CodeFixProvider.dll",
-        "analyzers/dotnet/cs/ILLink.RoslynAnalyzer.dll",
-        "build/Microsoft.NET.ILLink.Analyzers.props",
-        "build/Microsoft.NET.ILLink.Tasks.props",
-        "build/Microsoft.NET.ILLink.targets",
-        "microsoft.net.illink.tasks.9.0.11.nupkg.sha512",
-        "microsoft.net.illink.tasks.nuspec",
-        "tools/net472/ILLink.Tasks.dll",
-        "tools/net472/ILLink.Tasks.dll.config",
-        "tools/net472/Mono.Cecil.Mdb.dll",
-        "tools/net472/Mono.Cecil.Pdb.dll",
-        "tools/net472/Mono.Cecil.Rocks.dll",
-        "tools/net472/Mono.Cecil.dll",
-        "tools/net472/Sdk/Sdk.props",
-        "tools/net472/System.Buffers.dll",
-        "tools/net472/System.Collections.Immutable.dll",
-        "tools/net472/System.Memory.dll",
-        "tools/net472/System.Numerics.Vectors.dll",
-        "tools/net472/System.Reflection.Metadata.dll",
-        "tools/net472/System.Runtime.CompilerServices.Unsafe.dll",
-        "tools/net472/build/Microsoft.NET.ILLink.Analyzers.props",
-        "tools/net472/build/Microsoft.NET.ILLink.Tasks.props",
-        "tools/net472/build/Microsoft.NET.ILLink.targets",
-        "tools/net9.0/ILLink.Tasks.deps.json",
-        "tools/net9.0/ILLink.Tasks.dll",
-        "tools/net9.0/Mono.Cecil.Mdb.dll",
-        "tools/net9.0/Mono.Cecil.Pdb.dll",
-        "tools/net9.0/Mono.Cecil.Rocks.dll",
-        "tools/net9.0/Mono.Cecil.dll",
-        "tools/net9.0/Sdk/Sdk.props",
-        "tools/net9.0/build/Microsoft.NET.ILLink.Analyzers.props",
-        "tools/net9.0/build/Microsoft.NET.ILLink.Tasks.props",
-        "tools/net9.0/build/Microsoft.NET.ILLink.targets",
-        "tools/net9.0/illink.deps.json",
-        "tools/net9.0/illink.dll",
-        "tools/net9.0/illink.runtimeconfig.json",
-        "useSharedDesignerContext.txt"
       ]
     },
     "Microsoft.Web.WebView2/1.0.3179.45": {
@@ -3411,7 +3336,6 @@
     "net9.0-windows10.0.19041": [
       "CommunityToolkit.Mvvm >= 8.4.0",
       "Launcher.Core >= 1.0.0",
-      "Microsoft.NET.ILLink.Tasks >= 9.0.11",
       "Microsoft.Windows.SDK.BuildTools >= 10.0.26100.7175",
       "Microsoft.WindowsAppSDK >= 1.8.251106002"
     ]
@@ -3473,12 +3397,6 @@
           "CommunityToolkit.Mvvm": {
             "target": "Package",
             "version": "[8.4.0, )"
-          },
-          "Microsoft.NET.ILLink.Tasks": {
-            "suppressParent": "All",
-            "target": "Package",
-            "version": "[9.0.11, )",
-            "autoReferenced": true
           },
           "Microsoft.Windows.SDK.BuildTools": {
             "target": "Package",

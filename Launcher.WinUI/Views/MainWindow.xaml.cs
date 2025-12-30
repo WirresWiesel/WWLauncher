@@ -93,7 +93,9 @@ namespace Launcher.WinUI
 
         private void SetDefaultPage(string? tag)
         {
-            var navViewMenuItem = NavView.MenuItems.FirstOrDefault(tag);
+            var navViewMenuItem = NavView.MenuItems
+                .OfType<NavigationViewItem>()
+                .FirstOrDefault(x => x.Tag?.ToString() == tag);
             NavView.SelectedItem = navViewMenuItem;
         }
     }

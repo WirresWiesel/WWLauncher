@@ -19,7 +19,6 @@ C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.WPF\obj\R
 C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.WPF\obj\Release\net8.0-windows\Views\MenuSettingsWindow.g.cs
 C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.WPF\obj\Release\net8.0-windows\Views\RequestWindow.g.cs
 C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.WPF\obj\Release\net8.0-windows\App.g.cs
-C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.WPF\obj\Release\net8.0-windows\Launcher.WPF_Content.g.cs
 C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.WPF\obj\Release\net8.0-windows\Launcher.WPF_MarkupCompile.cache
 C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.WPF\obj\Release\net8.0-windows\Launcher.WPF_MarkupCompile.lref
 C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.WPF\obj\Release\net8.0-windows\App.baml
@@ -36,3 +35,4 @@ C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.WPF\obj\R
 C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.WPF\obj\Release\net8.0-windows\Launcher.WPF.pdb
 C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.WPF\obj\Release\net8.0-windows\Launcher.WPF.genruntimeconfig.cache
 C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.WPF\obj\Release\net8.0-windows\ref\Launcher.WPF.dll
+C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.WPF\bin\Release\net8.0-windows\CommunityToolkit.Mvvm.dll

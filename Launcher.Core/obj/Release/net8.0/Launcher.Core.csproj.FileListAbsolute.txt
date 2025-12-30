@@ -10,3 +10,16 @@ C:\Users\Pasca\Documents\Visual Studio 2022\Projects\WWLauncher\Launcher.Core\ob
 C:\Users\Pasca\Documents\Visual Studio 2022\Projects\WWLauncher\Launcher.Core\obj\Release\net8.0\refint\Launcher.Core.dll
 C:\Users\Pasca\Documents\Visual Studio 2022\Projects\WWLauncher\Launcher.Core\obj\Release\net8.0\Launcher.Core.pdb
 C:\Users\Pasca\Documents\Visual Studio 2022\Projects\WWLauncher\Launcher.Core\obj\Release\net8.0\ref\Launcher.Core.dll
+C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.Core\bin\Release\net8.0\Launcher.Core.deps.json
+C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.Core\bin\Release\net8.0\Launcher.Core.dll
+C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.Core\bin\Release\net8.0\Launcher.Core.pdb
+C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.Core\obj\Release\net8.0\Launcher.Core.csproj.AssemblyReference.cache
+C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.Core\obj\Release\net8.0\Launcher.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.Core\obj\Release\net8.0\Launcher.Core.AssemblyInfoInputs.cache
+C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.Core\obj\Release\net8.0\Launcher.Core.AssemblyInfo.cs
+C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.Core\obj\Release\net8.0\Launcher.Core.csproj.CoreCompileInputs.cache
+C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.Core\obj\Release\net8.0\Launcher.Core.sourcelink.json
+C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.Core\obj\Release\net8.0\Launcher.Core.dll
+C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.Core\obj\Release\net8.0\refint\Launcher.Core.dll
+C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.Core\obj\Release\net8.0\Launcher.Core.pdb
+C:\Users\Pasca\Documents\Visual Studio 2022\Projects\Launcher\Launcher.Core\obj\Release\net8.0\ref\Launcher.Core.dll

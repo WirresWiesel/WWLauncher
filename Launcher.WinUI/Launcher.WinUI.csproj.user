@@ -14,6 +14,10 @@
     <SplashScreenSource>C:\Users\Pasca\Downloads\WWLauncher.png</SplashScreenSource>
     <PackageLogoSource>C:\Users\Pasca\Downloads\WWLauncher.png</PackageLogoSource>
     <_LastSelectedProfileId>C:\Users\Pasca\Documents\Visual Studio 2022\Projects\WWLauncher\Launcher.WinUI\Properties\PublishProfiles\win-x64.pubxml</_LastSelectedProfileId>
+    <UapAppxPackageBuildMode>SideloadOnly</UapAppxPackageBuildMode>
+    <AppxShowAllApps>False</AppxShowAllApps>
+    <AppxBuildConfigurationSelection>x64</AppxBuildConfigurationSelection>
+    <PackageOptionalProjectsInIdeBuilds>False</PackageOptionalProjectsInIdeBuilds>
   </PropertyGroup>
   <ItemGroup>
     <None Update="App.xaml">
