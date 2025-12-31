@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    "net9.0-windows10.0.19041": {
+    "net9.0-windows10.0.26100": {
       "CommunityToolkit.Mvvm/8.4.0": {
         "type": "package",
         "compile": {
@@ -376,7 +376,7 @@
         }
       }
     },
-    "net9.0-windows10.0.19041/win-arm64": {
+    "net9.0-windows10.0.26100/win-arm64": {
       "CommunityToolkit.Mvvm/8.4.0": {
         "type": "package",
         "compile": {
@@ -710,7 +710,7 @@
         }
       }
     },
-    "net9.0-windows10.0.19041/win-x64": {
+    "net9.0-windows10.0.26100/win-x64": {
       "CommunityToolkit.Mvvm/8.4.0": {
         "type": "package",
         "compile": {
@@ -1044,7 +1044,7 @@
         }
       }
     },
-    "net9.0-windows10.0.19041/win-x86": {
+    "net9.0-windows10.0.26100/win-x86": {
       "CommunityToolkit.Mvvm/8.4.0": {
         "type": "package",
         "compile": {
@@ -3333,7 +3333,7 @@
     }
   },
   "projectFileDependencyGroups": {
-    "net9.0-windows10.0.19041": [
+    "net9.0-windows10.0.26100": [
       "CommunityToolkit.Mvvm >= 8.4.0",
       "Launcher.Core >= 1.0.0",
       "Microsoft.Windows.SDK.BuildTools >= 10.0.26100.7175",
@@ -3362,15 +3362,15 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net9.0-windows10.0.19041.0"
+        "net9.0-windows10.0.26100.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net9.0-windows10.0.19041": {
-          "targetAlias": "net9.0-windows10.0.19041.0",
+        "net9.0-windows10.0.26100": {
+          "targetAlias": "net9.0-windows10.0.26100.0",
           "projectReferences": {
             "C:\\Users\\Pasca\\Documents\\Visual Studio 2022\\Projects\\Launcher\\Launcher.Core\\Launcher.Core.csproj": {
               "projectPath": "C:\\Users\\Pasca\\Documents\\Visual Studio 2022\\Projects\\Launcher\\Launcher.Core\\Launcher.Core.csproj"
@@ -3391,8 +3391,8 @@
       "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
-      "net9.0-windows10.0.19041": {
-        "targetAlias": "net9.0-windows10.0.19041.0",
+      "net9.0-windows10.0.26100": {
+        "targetAlias": "net9.0-windows10.0.26100.0",
         "dependencies": {
           "CommunityToolkit.Mvvm": {
             "target": "Package",
@@ -3432,10 +3432,6 @@
             "version": "[9.0.11, 9.0.11]"
           },
           {
-            "name": "Microsoft.NETCore.App.Crossgen2.win-x64",
-            "version": "[9.0.11, 9.0.11]"
-          },
-          {
             "name": "Microsoft.NETCore.App.Runtime.win-arm64",
             "version": "[9.0.11, 9.0.11]"
           },
@@ -3449,7 +3445,7 @@
           },
           {
             "name": "Microsoft.Windows.SDK.NET.Ref",
-            "version": "[10.0.19041.57, 10.0.19041.57]"
+            "version": "[10.0.26100.57, 10.0.26100.57]"
           },
           {
             "name": "Microsoft.WindowsDesktop.App.Runtime.win-arm64",

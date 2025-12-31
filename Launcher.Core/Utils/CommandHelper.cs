@@ -9,16 +9,17 @@ using CommunityToolkit.Mvvm.Input;
 using System.Diagnostics;
 using Launcher.Core.Models;
 using Launcher.Core.Utils;
+using Launcher.Core.ViewModels;
 
 namespace Launcher.Core.Utils
 {
     public class CommandHelper : ObservableObject
     {
-        public void StartProgram(object programinfo)
+        public void StartProgram(ProgramViewModel programinfo)
         {
             Debug.WriteLine("[Info] CommandHelper: Start Program");
 
-            Programinfo _program = (Programinfo)programinfo;
+            ProgramViewModel _program = (ProgramViewModel)programinfo;
             Process? _proc = ProcessHandler.StartProgram(_program);
 
             if (_proc != null)
@@ -32,7 +33,7 @@ namespace Launcher.Core.Utils
         // Not nice yet
         public void StopProgram(object programinfo)
         {
-            Programinfo program = (Programinfo)programinfo;
+            ProgramViewModel program = (ProgramViewModel)programinfo;
             Debug.WriteLine($"[Info] CommandHelper: Try to stop Program \"{program.Name}\"");
             if(ProcessHandler.StopProgram(program) == false)
             {

@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Launcher.Core.Models;
+using Launcher.Core.ViewModels;
 using Launcher.Core.Services;
 using Launcher.Core.Utils;
 using Launcher.WinUI.Pages;
@@ -31,8 +32,8 @@ namespace Launcher.WinUI.Logic
         private readonly AssetService _assetService = new();
         private CommandHelper _commandHelper = new();
         public ObservableCollection<Asset> Assetlist { get; private set; } = new();
-        public ObservableCollection<Programinfo> Programlist{ get; private set; } = new();
-        public Asset? EditableSelectedAsset { get; private set; } = null;
+        public ObservableCollection<ProgramViewModel> Programlist{ get; private set; } = new();
+        public AssetViewModel? EditableSelectedAsset { get; private set; } = null;
         public ICommand StartProgram { get; }
         public ICommand StopProgram { get; }
         public ICommand StartAsset { get; }
@@ -44,8 +45,8 @@ namespace Launcher.WinUI.Logic
         public ICommand AddAsset { get; }
         public ICommand DeleteAsset { get; }
 
-        private ObservableCollection<Asset> _editableAssetlist = new();
-        public ObservableCollection<Asset> EditableAssetlist
+        private ObservableCollection<AssetViewModel> _editableAssetlist = new();
+        public ObservableCollection<AssetViewModel> EditableAssetlist
         {
             get => _editableAssetlist;
             set
@@ -57,19 +58,19 @@ namespace Launcher.WinUI.Logic
             }
         }
 
-        private Asset _selectedAsset = new();
+        private AssetViewModel _selectedAsset = new AssetViewModel(new Asset());
 
-        public Asset? SelectedAsset
+        public AssetViewModel? SelectedAsset
         {
             get => _selectedAsset;
             set
             {
                 if (SetProperty(ref _selectedAsset!, value))
                 {
-                    if (SelectedAsset != null)
+                    if (value != null)
                     {
-                        Debug.WriteLine($"[Info] UILogic: Property changed \"{SelectedAsset.Name}\"");
-                        EditableSelectedAsset = value?.Clone();
+                        Debug.WriteLine($"[Info] UILogic: Property changed \"{SelectedAsset?.Name}\"");
+                        EditableSelectedAsset = new AssetViewModel(value);
                         EditableAssetName = EditableSelectedAsset!.Name;
                         this.SetDirtyFlag(false);
                     }
@@ -110,7 +111,8 @@ namespace Launcher.WinUI.Logic
                 Debug.WriteLine("[Info] UILogic: Button clicked \"Program Start\"");
                 if (program != null)
                 {
-                    _commandHelper.StartProgram(program);
+                    ProgramViewModel _program = program as ProgramViewModel ?? new ProgramViewModel(new Programinfo());
+                    _commandHelper.StartProgram(_program);
                     this.SyncAndSave();
                 }
                 else
@@ -137,7 +139,7 @@ namespace Launcher.WinUI.Logic
                 Debug.WriteLine("[Info] UILogic: Button clicked \"Asset Start\"");
                 if (programlist != null)
                 {
-                    ObservableCollection<Programinfo> _programlist = programlist as ObservableCollection<Programinfo> ?? new();
+                    ObservableCollection<ProgramViewModel> _programlist = programlist as ObservableCollection<ProgramViewModel> ?? new();
                     foreach (var program in _programlist)
                     {
                         _commandHelper.StartProgram(program);
@@ -186,7 +188,7 @@ namespace Launcher.WinUI.Logic
                     if (program != null)
                     {
                         Programinfo? _program = program as Programinfo;
-                        _program!.EXEPath = file.Path;
+                        _program!.ExePath = file.Path;
                         this.SetDirtyFlag(true);
                     }
                 }
@@ -197,8 +199,8 @@ namespace Launcher.WinUI.Logic
                 Debug.WriteLine("[Info] UILogic: Button clicked \"Delete\"");
                 if (program != null)
                 {
-                    Programinfo? _program = program as Programinfo;
-                    _assetService.RemoveProgramFromObservableAsset(EditableSelectedAsset!.ProgramList, _program!);
+                    ProgramViewModel? _program = program as ProgramViewModel;
+                    _assetService.RemoveProgramFromObservableAsset(EditableSelectedAsset!.programlist, _program!);
                     this.SetDirtyFlag(true);
                 }
             });
@@ -206,8 +208,8 @@ namespace Launcher.WinUI.Logic
             AddProgram = new RelayCommand<object>(p =>
             {
                 Debug.WriteLine("[Info] UILogic: Button clicked \"AddProgram\"");
-                Programinfo _program = new();
-                EditableSelectedAsset!.ProgramList.Add(_program);
+                ProgramViewModel _program = new ProgramViewModel(new Programinfo());
+                EditableSelectedAsset!.programlist.Add(_program);
                 this.SetDirtyFlag(true);
             });
 
@@ -221,9 +223,9 @@ namespace Launcher.WinUI.Logic
             AddAsset = new RelayCommand<object>(p =>
             {
                 Debug.WriteLine("[Info] UILogic: Button clicked \"AddAsset\"");
-                Asset _asset = new();
+                AssetViewModel _asset = new AssetViewModel(new Asset());
                 _asset.Name = "New Asset";
-                _asset.PropertyChanged += (sender, e) => OnPropertyChanged_ProgramOrAsset(sender, e);
+                //_asset.PropertyChanged += (sender, e) => OnPropertyChanged_ProgramOrAsset(sender, e);
                 EditableAssetlist.Add(_asset);
                 SelectedAsset = EditableAssetlist[EditableAssetlist.Count - 1];
                 this.SyncAndSave();
@@ -233,7 +235,7 @@ namespace Launcher.WinUI.Logic
             {
                 Debug.WriteLine("[Info] UILogic: Button clicked \"DeleteAsset\"");
                 int _index = GetIndexOfAssetFromAssetlist(SelectedAsset!, EditableAssetlist, Assetlist);
-                Asset _AssetToDelete = EditableAssetlist[_index];
+                AssetViewModel _AssetToDelete = EditableAssetlist[_index];
                 EditableAssetlist.Remove(_AssetToDelete);
                 SelectedAsset = EditableAssetlist[_index - 1];
                 this.SyncAndSave();
@@ -256,8 +258,9 @@ namespace Launcher.WinUI.Logic
             {
                 foreach (Asset asset in Assetlist)
                 {
-                    asset.PropertyChanged += (sender, e) => OnPropertyChanged_ProgramOrAsset(sender, e);
-                    EditableAssetlist.Add(asset);
+                    //asset.PropertyChanged += (sender, e) => OnPropertyChanged_ProgramOrAsset(sender, e);
+                    AssetViewModel _assetViewModel = new AssetViewModel(asset);
+                    EditableAssetlist.Add(_assetViewModel);
                 }
                 SelectedAsset = EditableAssetlist[0];
             }
@@ -274,19 +277,18 @@ namespace Launcher.WinUI.Logic
         {
             Debug.WriteLine("[Info] UILogic: Updating EditableProgramList");
             Programlist.Clear();
-            foreach (var program in EditableSelectedAsset!.ProgramList)
+            foreach (var program in EditableSelectedAsset!.programlist)
             {
                 //Debug.WriteLine($"{program.Name}");
-                program.PropertyChanged += (sender, e) => OnPropertyChanged_ProgramOrAsset(sender, e);
-
+                //program.PropertyChanged += (sender, e) => OnPropertyChanged_ProgramOrAsset(sender, e);
                 this.UpdateProgramStates(program);
                 Programlist.Add(program);
             }
-            EditableSelectedAsset.ProgramList = Programlist;
+            EditableSelectedAsset.programlist = Programlist;
         }
 
         //Funktion zum erstmaligen initialisieren aller States
-        private void UpdateProgramStates(Programinfo program)
+        private void UpdateProgramStates(ProgramViewModel program)
         {
             if (ProcessHandler.FindRunningProcess(program) != null)
             {
@@ -322,18 +324,18 @@ namespace Launcher.WinUI.Logic
         private void SyncAndSave()
         {
             Debug.WriteLine("[UILogic] UILogic: Sync and Save");
-            this.EditAssetInAssetlist(EditableAssetlist, SelectedAsset, EditableSelectedAsset);
+            this.EditAssetInAssetlist(EditableAssetlist, SelectedAsset, EditableSelectedAsset!);
             this.SaveAssets();
         }
 
         private void SaveAssets()
         {
             Debug.WriteLine("[UILogic] UILogic: Save Assetlist");
-            _assetService.SaveObservableAssetList(EditableAssetlist);
+            _assetService.SaveObservableAssetList(CollectionHelper.ToAssetModelList(EditableAssetlist));
             this.SetDirtyFlag(false);
         }
 
-        private void EditAssetInAssetlist(ObservableCollection<Asset> assetList, Asset? rootAsset, Asset? editableAsset)
+        private void EditAssetInAssetlist(ObservableCollection<AssetViewModel> assetList, AssetViewModel? rootAsset, AssetViewModel editableAsset)
         {
             if (editableAsset != null && rootAsset != null)
             {
@@ -341,23 +343,24 @@ namespace Launcher.WinUI.Logic
                 if (_targetAsset == null)
                     return;
 
-                _targetAsset.CopyFrom(editableAsset);
+                //_targetAsset.CopyFrom(editableAsset);
+                _targetAsset = new AssetViewModel(editableAsset);
             }
         }
 
-        private Asset? GetAssetInAssetlist(ObservableCollection<Asset> assetList, Asset asset)
+        private AssetViewModel? GetAssetInAssetlist(ObservableCollection<AssetViewModel> assetList, AssetViewModel asset)
         {
-            Asset? _targetAsset = assetList.FirstOrDefault(p => p.Name == asset.Name);
+            AssetViewModel? _targetAsset = assetList.FirstOrDefault(p => p.Name == asset.Name);
             return _targetAsset;
         }
 
-        private int GetIndexOfAssetFromAssetlist(Asset asset, ObservableCollection<Asset> assetlist, ObservableCollection<Asset>? backupAssetlist = null)
+        private int GetIndexOfAssetFromAssetlist(AssetViewModel asset, ObservableCollection<AssetViewModel> assetlist, ObservableCollection<Asset>? backupAssetlist = null)
         {
             int _index = -1;
             _index = assetlist.IndexOf(SelectedAsset!);
             if (_index == -1 && backupAssetlist != null)
             {
-                _index = backupAssetlist.IndexOf(SelectedAsset!);
+                _index = backupAssetlist.IndexOf(SelectedAsset!.ToModel());
             }
 
             return _index;

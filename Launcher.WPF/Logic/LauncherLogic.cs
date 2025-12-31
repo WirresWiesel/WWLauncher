@@ -47,8 +47,8 @@ namespace Launcher.Logic
             {
                 var startinfo = new ProcessStartInfo
                 {
-                    FileName = programinfo.EXEPath,
-                    WorkingDirectory = Path.GetDirectoryName(programinfo.EXEPath),
+                    FileName = programinfo.ExePath,
+                    WorkingDirectory = Path.GetDirectoryName(programinfo.ExePath),
                     UseShellExecute = true
                 };
 
@@ -104,7 +104,7 @@ namespace Launcher.Logic
                     }
 
                     Debug.WriteLine($"Checking state for program: {program.Name}");
-                    Debug.WriteLine($"Executable Path: {program.EXEPath}");
+                    Debug.WriteLine($"Executable Path: {program.ExePath}");
                     Debug.WriteLine($"Programinstance: {program.ProcessInstance}");
                 }
             }

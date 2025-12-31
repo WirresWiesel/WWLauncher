@@ -3,6 +3,7 @@ using System.IO;
 using System.Text.Json;
 using System.Diagnostics;
 using System.Collections.ObjectModel;
+using Launcher.Core.ViewModels;
 
 namespace Launcher.Core.Services
 {
@@ -64,7 +65,7 @@ namespace Launcher.Core.Services
 
                 if (exePath != null)
                 {
-                    asset.EXEPath = exePath;
+                    asset.ExePath = exePath;
                 }
             }
             this.SaveInternalAssetList();
@@ -121,7 +122,7 @@ namespace Launcher.Core.Services
                 Debug.WriteLine("[Error] AssetService: Asset is null, can not remove program");
         }
 
-        public void RemoveProgramFromObservableAsset(ObservableCollection<Programinfo> programlist, Programinfo program)
+        public void RemoveProgramFromObservableAsset(ObservableCollection<ProgramViewModel> programlist, ProgramViewModel program)
         {
             Debug.WriteLine($"[Info] AssetService: Remove {program.Name} from ObservableProgramList somehow");
             if (programlist != null)
@@ -134,7 +135,7 @@ namespace Launcher.Core.Services
         {
             if (asset != null)
             {
-                asset.EXEPath = proginfo.EXEPath;
+                asset.ExePath = proginfo.ExePath;
             }
             else
                 Debug.WriteLine("[Error] AssetService: Asset is null, cannot add program");
@@ -142,7 +143,7 @@ namespace Launcher.Core.Services
 
         public bool IsSetMainGamePath(Asset asset)
         {
-            if (!string.IsNullOrEmpty(asset.EXEPath))
+            if (!string.IsNullOrEmpty(asset.ExePath))
                 return true;
             else
                 return false;

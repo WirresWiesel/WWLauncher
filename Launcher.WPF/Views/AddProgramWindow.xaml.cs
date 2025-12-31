@@ -35,7 +35,7 @@ namespace Launcher.Views
             Result = new Programinfo()
             {
                 Name = TxtBoxCustomName.Text,
-                EXEPath = TxtPath.Text ?? string.Empty
+                ExePath = TxtPath.Text ?? string.Empty
             };
 
             this.DialogResult = true;

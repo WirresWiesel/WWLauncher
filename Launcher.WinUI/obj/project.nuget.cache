@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "XszvMeYI3eA=",
+  "dgSpecHash": "28CnL+07VEA=",
   "success": true,
   "projectFilePath": "C:\\Users\\Pasca\\Documents\\Visual Studio 2022\\Projects\\Launcher\\Launcher.WinUI\\Launcher.WinUI.csproj",
   "expectedPackageFiles": [
@@ -20,8 +20,7 @@
     "C:\\Users\\Pasca\\.nuget\\packages\\microsoft.windowsappsdk.winui\\1.8.251105000\\microsoft.windowsappsdk.winui.1.8.251105000.nupkg.sha512",
     "C:\\Users\\Pasca\\.nuget\\packages\\system.numerics.tensors\\9.0.0\\system.numerics.tensors.9.0.0.nupkg.sha512",
     "C:\\Users\\Pasca\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x86\\9.0.11\\microsoft.netcore.app.runtime.win-x86.9.0.11.nupkg.sha512",
-    "C:\\Users\\Pasca\\.nuget\\packages\\microsoft.netcore.app.crossgen2.win-x64\\9.0.11\\microsoft.netcore.app.crossgen2.win-x64.9.0.11.nupkg.sha512",
-    "C:\\Users\\Pasca\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.19041.57\\microsoft.windows.sdk.net.ref.10.0.19041.57.nupkg.sha512",
+    "C:\\Users\\Pasca\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.26100.57\\microsoft.windows.sdk.net.ref.10.0.26100.57.nupkg.sha512",
     "C:\\Users\\Pasca\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x86\\9.0.11\\microsoft.aspnetcore.app.runtime.win-x86.9.0.11.nupkg.sha512",
     "C:\\Users\\Pasca\\.nuget\\packages\\microsoft.netcore.app.runtime.win-arm64\\9.0.11\\microsoft.netcore.app.runtime.win-arm64.9.0.11.nupkg.sha512",
     "C:\\Users\\Pasca\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\9.0.11\\microsoft.aspnetcore.app.runtime.win-x64.9.0.11.nupkg.sha512",

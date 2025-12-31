@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:models="using:Launcher.Core.Models"
+    xmlns:viewmodels="using:Launcher.Core.ViewModels"
     xmlns:utils="using:Launcher.WinUI.Utils"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -47,7 +48,8 @@
                            FontWeight="SemiBold"/>
 
                 <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,12">
-                    <TextBlock Text="Name:" VerticalAlignment="Center"/>
+                    <TextBlock Text="Name:" 
+                               VerticalAlignment="Center"/>
                     <ComboBox Width="200"
                               Margin="6,0,0,0"
                               DisplayMemberPath="Name"
@@ -96,9 +98,50 @@
                            FontWeight="SemiBold"/>
 
                 <TextBox Grid.Column="0"
-                         Margin="0,0,20,0"
+                         Margin="6,0,6,0"
                          Text="{Binding EditableAssetName, Mode=TwoWay}"
                          PlaceholderText="Name"/>
+
+                <TextBlock Text="Main Game"
+                           FontSize="18"
+                           FontWeight="SemiBold"/>
+
+                <Grid Padding="6">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Programmname -->
+                    <TextBox Grid.Column="0"
+                             Margin="0,0,20,0"
+                             Text="{Binding EditableSelectedAsset.Name, Mode=TwoWay}"
+                             PlaceholderText="Name"/>
+
+                    <!-- EXE Pfad -->
+                    <TextBox Grid.Column="1"
+                             Margin="0,0,20,0"
+                             Text="{Binding EditableSelectedAsset.ExePath, Mode=TwoWay}"
+                             PlaceholderText="Path to .exe"
+                             IsReadOnly="True"/>
+
+                    <!-- Entfernen -->
+                    <Button Grid.Column="2"
+                            Margin="0,0,6,0"
+                            Content="📁"
+                            ToolTipService.ToolTip="Change .exe Path"
+                            Command="{Binding DataContext.Browse, ElementName=AssetsWindowPage}"
+                            CommandParameter="{Binding}"/>
+
+                    <!-- Entfernen -->
+                    <Button Grid.Column="3"
+                            Content="🗑"
+                            ToolTipService.ToolTip="Delete Program"
+                            Command="{Binding DataContext.Delete, ElementName=AssetsWindowPage}"
+                            CommandParameter="{Binding}"/>
+                </Grid>
 
                 <TextBlock Text="Programs"
                            FontSize="18"
@@ -106,7 +149,7 @@
 
                 <ListView ItemsSource="{Binding Programlist}">
                     <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="models:Programinfo">
+                        <DataTemplate x:DataType="viewmodels:ProgramViewModel">
                             <Grid Padding="6">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -124,7 +167,7 @@
                                 <!-- EXE Pfad -->
                                 <TextBox Grid.Column="1"
                                          Margin="0,0,20,0"
-                                         Text="{Binding EXEPath, Mode=TwoWay}"
+                                         Text="{Binding ExePath, Mode=TwoWay}"
                                          PlaceholderText="Path to .exe"
                                          IsReadOnly="True"/>
 

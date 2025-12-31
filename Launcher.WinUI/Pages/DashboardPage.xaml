@@ -6,6 +6,7 @@
     xmlns:logic="using:Launcher.WinUI.Logic"
     xmlns:utils="using:Launcher.WinUI.Utils"
     xmlns:models="using:Launcher.Core.Models"
+    xmlns:viewmodels="using:Launcher.Core.ViewModels"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -74,7 +75,7 @@
                 <!-- Programmliste für das ausgewählte Asset -->
                 <ListView ItemsSource="{Binding Programlist}">
                     <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="models:Programinfo">
+                        <DataTemplate x:DataType="viewmodels:ProgramViewModel">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>

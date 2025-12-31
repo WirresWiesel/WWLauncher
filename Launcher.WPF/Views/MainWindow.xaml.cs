@@ -189,7 +189,7 @@ namespace Launcher.Views
         private void BtnClick_CreateNewAsset(object sender, RoutedEventArgs e)
         {
             string assetName = string.Empty;
-            string exePath = string.Empty;
+            string ExePath = string.Empty;
             Asset newAsset;
 
             var editAssetWindow = new EditWindow(assetName, null)
@@ -200,13 +200,13 @@ namespace Launcher.Views
             if (editAssetWindow.ShowDialog() == true)
             {
                 assetName = editAssetWindow.NewName;
-                exePath = editAssetWindow.NewPath;
+                ExePath = editAssetWindow.NewPath;
             }
 
             if (!(assetName == string.Empty))
             { 
                 newAsset = _assetService.CreateAsset(assetName);
-                _assetService.EditAsset(newAsset, assetName, exePath);
+                _assetService.EditAsset(newAsset, assetName, ExePath);
                 this.InitializeLauncher();
 
                 // Make the ComboBox select the last created Asset
@@ -274,10 +274,10 @@ namespace Launcher.Views
         {
             var asset = ComboAssets.SelectedItem as Asset;
             var index = ComboAssets.SelectedIndex;
-            var editWindow = new EditWindow(asset!.Name, asset!.EXEPath);
+            var editWindow = new EditWindow(asset!.Name, asset!.ExePath);
             if (editWindow.ShowDialog() == true)
             {
-                asset.EXEPath = editWindow.NewPath;
+                asset.ExePath = editWindow.NewPath;
                 asset.Name = editWindow.NewName;
                 ComboAssets.Text = asset.Name;
             }
@@ -287,12 +287,12 @@ namespace Launcher.Views
         private void BtnClick_EditProgram(object sender, RoutedEventArgs e)
         {
             var program = LstProgram.SelectedItem as Programinfo;
-            var editWindow = new EditWindow(program!.Name, program!.EXEPath);
+            var editWindow = new EditWindow(program!.Name, program!.ExePath);
             if (editWindow.ShowDialog() == true)
             {
                 if (program != null)
                 {
-                    program.EXEPath = editWindow.NewPath;
+                    program.ExePath = editWindow.NewPath;
                     program.Name = editWindow.NewName;
                 }
             }
