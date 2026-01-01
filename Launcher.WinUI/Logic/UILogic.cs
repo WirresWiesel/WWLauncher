@@ -1,27 +1,28 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using System;
+using System.Diagnostics;
+using System.Windows.Input;
+using System.ComponentModel;
+using System.Collections.ObjectModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Launcher.Core.Models;
-using Launcher.Core.ViewModels;
-using Launcher.Core.Services;
 using Launcher.Core.Utils;
+using Launcher.Core.Models;
+using Launcher.Core.Services;
+using Launcher.Core.Interfaces;
+using Launcher.Core.ViewModels;
+using Microsoft.UI.Xaml;
+using Windows.Storage.Pickers;
 using Launcher.WinUI.Pages;
 using Microsoft.UI.Input.DragDrop;
-using Microsoft.UI.Xaml;
-using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using Windows.ApplicationModel.Email.DataProvider;
 using Windows.Media.AppBroadcasting;
 using Windows.Media.ContentRestrictions;
-using Windows.Storage.Pickers;
 using Windows.UI.Notifications;
 using WinRT.Interop;
 using Windows.UI.ViewManagement;
@@ -87,7 +88,6 @@ namespace Launcher.WinUI.Logic
                     {
                         Debug.WriteLine($"[Info] UILogic: Property changed \"{SelectedAsset?.Name}\"");
                         EditableSelectedAsset = new AssetViewModel(value);
-                        //EditableAssetName = EditableSelectedAsset!.Name;
                         if (EditableSelectedAsset.IsSetExePath())
                         {
                             this.SetModeSelector(true);
@@ -102,26 +102,6 @@ namespace Launcher.WinUI.Logic
                 }
             }
         }
-
-        /*
-        private string _editableAssetName = string.Empty;
-        public string? EditableAssetName
-        {
-            get => _editableAssetName;
-            set
-            {
-                if (SetProperty(ref _editableAssetName!, value))
-                {
-                    if (EditableAssetName != null)
-                    {
-                        Debug.WriteLine($"[Info] UILogic: Property changed \"{EditableAssetName}\"");
-                        EditableSelectedAsset!.Name = EditableAssetName;
-                        this.SetDirtyFlag(true);
-                    }
-                }
-            }
-        }
-        */
 
         public bool _dirtyFlag;
         public bool DirtyFlag
@@ -251,34 +231,19 @@ namespace Launcher.WinUI.Logic
                     Debug.WriteLine($"{file.Path}");
                     if (program != null)
                     {
-                        ProgramViewModel? _program = null;
-                        AssetViewModel? _asset = null;
-
-                        if (program.GetType() == typeof(ProgramViewModel))
+                        IStartable? _program = null;
+                        if (TypeHelper.IsIStartable(program))
                         {
-                            Debug.WriteLine("[Info] UILogic: Setting ExePath in ProgramViewModel");
-                            _program = program as ProgramViewModel;
+                            _program = program as IStartable;
                         }
-                        else if (program.GetType() == typeof(AssetViewModel))
-                        {
-                            Debug.WriteLine("[Info] UILogic: Setting ExePath in AssetViewModel's selected Program");
-                            _asset = program as AssetViewModel;
-                        }
-                        else
-                            Debug.WriteLine("[Error] UILogic: Unknown type in Browse command");
 
                         if (_program != null)
                         {
                             _program!.ExePath = file.Path;
                             this.SetDirtyFlag(true);
                         }
-                        else if (_asset != null)
-                        {
-                            _asset!.ExePath = file.Path;
-                            this.SetDirtyFlag(true);
-                        }
                         else
-                            Debug.WriteLine("[Error] UILogic: ProgramViewModel is null");
+                            Debug.WriteLine("[Error] UILogic: Program is null");
                     }
                 }
             });
@@ -334,7 +299,7 @@ namespace Launcher.WinUI.Logic
             DeleteAsset = new RelayCommand<object>(p =>
             {
                 Debug.WriteLine("[Info] UILogic: Button clicked \"DeleteAsset\"");
-                int _index = GetIndexOfAssetFromAssetlist(SelectedAsset!, EditableAssetlist, Assetlist);
+                int _index = CollectionHelper.GetIndexOfAssetFromAssetlist(SelectedAsset, EditableAssetlist, Assetlist);  //GetIndexOfAssetFromAssetlist(SelectedAsset!, EditableAssetlist, Assetlist);
                 AssetViewModel _AssetToDelete = EditableAssetlist[_index];
                 EditableAssetlist.Remove(_AssetToDelete);
                 SelectedAsset = EditableAssetlist[_index - 1];
@@ -342,12 +307,21 @@ namespace Launcher.WinUI.Logic
             });
         }
 
+        /// <summary>
+        /// Initializes the UI logic by retrieving assets and preparing the UI state.
+        /// </summary>
         public void StartUILogic()
         {
             Debug.WriteLine("[Info] UILogic: Starting UILogic");
             this.GetAssets();
         }
 
+        /// <summary>
+        /// Retrieves all assets from the asset service and populates the observable collections.
+        /// Each asset is wrapped in an AssetViewModel, with PropertyChanged events subscribed.
+        /// If any asset has a valid executable path, the mode selector is updated accordingly.
+        /// The first asset in the list is set as the selected asset if assets exist.
+        /// </summary>
         private void GetAssets()
         {
             Debug.WriteLine("[Info] UILogic: Getting Assets");
@@ -379,7 +353,9 @@ namespace Launcher.WinUI.Logic
         }
 
         /// <summary>
-        /// Reading the ProgramList of the Asset and creating a new instance named Programlist
+        /// Updates the program list of the currently selected asset.
+        /// All programs are reloaded, their PropertyChanged events are subscribed,
+        /// their states are updated, and the list is assigned to the bound collection.
         /// </summary>
         private void UpdateProgramlists()
         {
@@ -395,8 +371,11 @@ namespace Launcher.WinUI.Logic
             EditableSelectedAsset.programlist = Programlist;
         }
 
-        //Funktion zum erstmaligen initialisieren aller States
-        private void UpdateProgramStates(ProgramViewModel program)
+        /// <summary>
+        /// Updates the current state of the given program based on whether its process is running.
+        /// Sets the state to Running if the process is active, otherwise to NotRunning.
+        /// </summary>
+        private void UpdateProgramStates(IStartable program)
         {
             if (ProcessHandler.FindRunningProcess(program) != null)
             {
@@ -410,13 +389,18 @@ namespace Launcher.WinUI.Logic
             }
         }
 
+        /// <summary>
+        /// Handles property changes for programs or assets, specifically the "Name" and "ExePath" properties.
+        /// If the sender is an AssetViewModel, updates the mode selector based on whether ExePath is set.
+        /// Marks the state as dirty whenever these properties change.
+        /// </summary>
         private void OnPropertyChanged_ProgramOrAsset(object? sender, PropertyChangedEventArgs args)
         {
             if (args.PropertyName == "Name" ||
                 args.PropertyName == "ExePath")
             {
                 Debug.WriteLine($"[UILogic] UILogic: Property changed {args.PropertyName}");
-                if (this.IsAssetViewModel(sender!))
+                if (TypeHelper.IsAssetViewModel(sender!))
                 {
                     AssetViewModel? _asset = sender as AssetViewModel;
                     Debug.WriteLine($"[UILogic] UILogic: Sender is {sender!.GetType()}");
@@ -434,6 +418,10 @@ namespace Launcher.WinUI.Logic
             }
         }
 
+        /// <summary>
+        /// Sets the ModeSelectorActive flag to the specified state if it differs from the current state.
+        /// Logs the change for debugging purposes.
+        /// </summary>
         private void SetModeSelector(bool state)
         {
             if (this.ModeSelectorActive != state)
@@ -443,6 +431,10 @@ namespace Launcher.WinUI.Logic
             }
         }
 
+        /// <summary>
+        /// Updates the DirtyFlag to the specified state if it has changed,
+        /// and logs the change for debugging purposes.
+        /// </summary>
         private void SetDirtyFlag(bool state)
         {
             if (this.DirtyFlag != state)
@@ -452,54 +444,25 @@ namespace Launcher.WinUI.Logic
             }
         }
 
+        /// <summary>
+        /// Synchronizes the currently editable asset with the asset list and saves all assets.
+        /// </summary>
         private void SyncAndSave()
         {
             Debug.WriteLine("[UILogic] UILogic: Sync and Save");
-            this.EditAssetInAssetlist(EditableAssetlist, SelectedAsset, EditableSelectedAsset!);
+            CollectionHelper.EditAssetInAssetlist(EditableAssetlist, SelectedAsset, EditableSelectedAsset!);
             this.SaveAssets();
         }
 
+        /// <summary>
+        /// Saves the current list of editable assets using the asset service
+        /// and resets the DirtyFlag to indicate no unsaved changes.
+        /// </summary>
         private void SaveAssets()
         {
             Debug.WriteLine("[UILogic] UILogic: Save Assetlist");
             _assetService.SaveObservableAssetList(CollectionHelper.ToAssetModelList(EditableAssetlist));
             this.SetDirtyFlag(false);
-        }
-
-        private void EditAssetInAssetlist(ObservableCollection<AssetViewModel> assetList, AssetViewModel? rootAsset, AssetViewModel editableAsset)
-        {
-            if (editableAsset != null && rootAsset != null)
-            {
-                var _targetAsset = GetAssetInAssetlist(assetList, rootAsset);
-                if (_targetAsset == null)
-                    return;
-
-                //_targetAsset.CopyFrom(editableAsset);
-                _targetAsset.CopyFrom(editableAsset);
-            }
-        }
-
-        private AssetViewModel? GetAssetInAssetlist(ObservableCollection<AssetViewModel> assetList, AssetViewModel asset)
-        {
-            AssetViewModel? _targetAsset = assetList.FirstOrDefault(p => p.Name == asset.Name);
-            return _targetAsset;
-        }
-
-        private int GetIndexOfAssetFromAssetlist(AssetViewModel asset, ObservableCollection<AssetViewModel> assetlist, ObservableCollection<Asset>? backupAssetlist = null)
-        {
-            int _index = -1;
-            _index = assetlist.IndexOf(SelectedAsset!);
-            if (_index == -1 && backupAssetlist != null)
-            {
-                _index = backupAssetlist.IndexOf(SelectedAsset!.ToModel());
-            }
-
-            return _index;
-        }
-
-        private bool IsAssetViewModel(object obj)
-        {
-            return obj is AssetViewModel;
         }
     }
 }

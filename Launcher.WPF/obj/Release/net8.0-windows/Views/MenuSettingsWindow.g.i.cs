@@ -77,7 +77,7 @@ namespace Launcher.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Launcher.WPF;component/views/menusettingswindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Launcher.WPF;V1.0.0.0;component/views/menusettingswindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\MenuSettingsWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -9,6 +9,7 @@
     <ApplicationIcon>WWLauncher.ico</ApplicationIcon>
     <AssemblyName />
     <RootNamespace />
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
