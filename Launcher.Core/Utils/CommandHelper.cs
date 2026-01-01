@@ -10,40 +10,31 @@ using System.Diagnostics;
 using Launcher.Core.Models;
 using Launcher.Core.Utils;
 using Launcher.Core.ViewModels;
+using Launcher.Core.Interfaces;
 
 namespace Launcher.Core.Utils
 {
     public class CommandHelper : ObservableObject
     {
-        public void StartProgram(ProgramViewModel programinfo)
+        public void StartProgram(IStartable programinfo)
         {
             Debug.WriteLine("[Info] CommandHelper: Start Program");
+            Process? _proc = null;
 
-            ProgramViewModel _program = (ProgramViewModel)programinfo;
-            Process? _proc = ProcessHandler.StartProgram(_program);
-
-            if (_proc != null)
-            {
-                _program.SetProcessName(_proc);
-                _program.SetProcessInstance(_proc);
-                _program.SetCurrentState(Programinfo.Running);
-            }
+            _proc = ProcessHandler.StartProgram(programinfo);
         }
 
-        // Not nice yet
-        public void StopProgram(object programinfo)
+        public void StopProgram(IStartable programinfo)
         {
-            ProgramViewModel program = (ProgramViewModel)programinfo;
-            Debug.WriteLine($"[Info] CommandHelper: Try to stop Program \"{program.Name}\"");
-            if(ProcessHandler.StopProgram(program) == false)
+            if (ProcessHandler.StopProgram(programinfo) == false)
             {
-                Debug.WriteLine($"[Info] CommandHelper: Could not stop program: \"{program.Name}\"");
+                Debug.WriteLine($"[Info] CommandHelper: Could not stop program");
             }
             else
             {
                 Debug.WriteLine("[Info] CommandHelper: Program stopped");
             }
-            program.SetCurrentState(Programinfo.NotRunning);
+            programinfo.SetCurrentState(Programinfo.NotRunning);
         }
     }
 }

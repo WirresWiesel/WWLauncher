@@ -1,4 +1,5 @@
-﻿using Launcher.Core.Models;
+﻿using Launcher.Core.Interfaces;
+using Launcher.Core.Models;
 using Launcher.Core.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -12,8 +13,7 @@ namespace Launcher.Core.Utils
 {
     public static class ProcessHandler
     {
-        private static ProcessObject? _processObject = new();
-        public static Process? StartProgram(ProgramViewModel program)
+        public static Process? StartProgram(IStartable program)
         {
             Debug.WriteLine("[Info] ProcessHandler: Start Program");
             var startinfo = new ProcessStartInfo
@@ -24,28 +24,22 @@ namespace Launcher.Core.Utils
             };
 
             Process? _process = Process.Start(startinfo);
-            if (_process != null)
-            {
-                _processObject ??= new ProcessObject();
-                _processObject.Initialize();
-                _processObject.AddProcess(_process);
-                program.processObject = _processObject;
-            }
+            program.SetProcess(_process!);
             return _process;
         }
 
-        public static bool StopProgram(ProgramViewModel program)
+        public static bool StopProgram(IStartable program)
         {
-            if (program.processObject != null)
+            if (program.ProcessObject != null)
             {
                 Debug.WriteLine($"[Info] ProcessHandler: Stopping program via ProcessObject \"{program.Name}\"");
                 StopProcessObject(program);
                 return true;
             }
-            else if (program.processInstance != null)
+            else if (program.ProcessInstance != null)
             {
                 Debug.WriteLine($"[Info] ProcessHandler: Stopping program via ProcessInstance \"{program.Name}\"");
-                StopProcess(program.processInstance);
+                StopProcess(program.ProcessInstance);
                 return true;
             }
             else
@@ -89,12 +83,12 @@ namespace Launcher.Core.Utils
             }
         }
 
-        public static bool StopProcessObject(ProgramViewModel program)
+        public static bool StopProcessObject(IStartable program)
         {
             try
             {
-                program.processObject!.Dispose();
-                program.processObject = null;
+                program.ProcessObject!.Dispose();
+                program.ProcessObject = null;
                 return true;
             }
             catch (Exception ex)
@@ -128,14 +122,14 @@ namespace Launcher.Core.Utils
 
         // Have to return a list of Processes because of multi threaded programs
         // Process.GetProcesses <- executed by every program??? get List every change of asset???
-        public static List<Process>? FindRunningProcess(ProgramViewModel program)
+        public static List<Process>? FindRunningProcess(IStartable program)
         {
-            Debug.WriteLine($"[Info] ProcessHandler: Search for running Process by Name \"{program.processName}\"");
+            Debug.WriteLine($"[Info] ProcessHandler: Search for running Process by Name \"{program.ProcessName}\"");
             List<Process> processes = Process.GetProcesses().ToList();
             List<Process>? _processes = new();
             foreach (Process process in processes)
             {
-                if (process.ProcessName == program.processName)
+                if (process.ProcessName == program.ProcessName)
                 {
                     _processes.Add(process);
                     Debug.WriteLine($"[Info] ProcessHandler: Process found \"{process.ProcessName}\"; ID \"{process.Id}\"");

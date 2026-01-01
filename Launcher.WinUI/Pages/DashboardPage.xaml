@@ -9,8 +9,9 @@
     xmlns:viewmodels="using:Launcher.Core.ViewModels"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
-    
+    mc:Ignorable="d"
+    x:Name="DashboardPageRoot">
+
     <Page.Resources>
         <utils:StatusConverter x:Key="StatusConverter"/>
         <utils:BoleanInverter x:Key="BoleanInverter"/>
@@ -30,35 +31,52 @@
                 Padding="12">
             
             <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
 
-                <TextBlock Grid.Row="0"
-                           Margin="0,0,0,6"
-                           Text="Active Asset"
-                           FontSize="18"
-                           FontWeight="SemiBold"/>
+                    <TextBlock Grid.Row="0"
+                Margin="0,0,0,6"
+                Text="Active Asset"
+                FontSize="18"
+                FontWeight="SemiBold"/>
 
-                <!-- Asset Auswahl -->
-                <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,12">
-                    <TextBlock Text="Name:" VerticalAlignment="Center"/>
-                    <ComboBox Width="200"
-                              Margin="6,0,0,0"
-                              DisplayMemberPath="Name"
-                              PlaceholderText="Choose Asset..."
-                              ItemsSource="{Binding EditableAssetlist}"
-                              SelectedItem="{Binding SelectedAsset, Mode=TwoWay}"
-                              IsEnabled="{Binding DirtyFlag, Converter={StaticResource BoleanInverter}}"/>
-                    <Button Content="Start Asset" Margin="12,0,0,0"
-                            Command="{Binding DataContext.StartAsset, ElementName=MainWindowPage}"
-                            CommandParameter="{Binding Programlist}"/>
-                    <Button Content="Stop Asset" Margin="6,0,0,0"
-                            Command="{Binding DataContext.StopAsset, ElementName=MainWindowPage}"
-                            CommandParameter="{Binding Programlist}"/>
-                </StackPanel>
+                    <!-- Asset Auswahl -->
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,12" VerticalAlignment="Center">
+                        <TextBlock Text="Name:" VerticalAlignment="Center"/>
+                        <ComboBox Width="200"
+                                  Margin="6,0,0,0"
+                                  DisplayMemberPath="Name"
+                                  PlaceholderText="Choose Asset..."
+                                  ItemsSource="{Binding EditableAssetlist}"
+                                  SelectedItem="{Binding SelectedAsset, Mode=TwoWay}"
+                                  IsEnabled="{Binding DirtyFlag, Converter={StaticResource BoleanInverter}}"/>
+                        <Button Content="Start Asset" Margin="12,0,0,0"
+                                Command="{Binding DataContext.StartAsset, ElementName=DashboardPageRoot}"
+                                CommandParameter="{Binding EditableSelectedAsset}"/>
+                        <Button Content="Stop Asset" Margin="6,0,0,0"
+                                Command="{Binding DataContext.StopAsset, ElementName=DashboardPageRoot}"
+                                CommandParameter="{Binding EditableSelectedAsset}"/>
+                    </StackPanel>
+                </Grid>
+                <ToggleSwitch Grid.Column="1"
+                              Header="Start Mode"
+                              Margin="25 0 0 0"
+                              HorizontalAlignment="Left"
+                              OffContent="without Main Game"
+                              OnContent="with Main Game"
+                              IsOn="{Binding AssetStartMode, Mode=TwoWay}"
+                              IsEnabled="{Binding ModeSelectorActive}"/>
             </Grid>
+           
         </Border>
 
         <Border Grid.Row="1"
@@ -89,10 +107,10 @@
                                          Margin="0,0,20,0"/>
                                 <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
                                     <Button Content="Start" Margin="10"
-                                            Command="{Binding DataContext.StartProgram, ElementName=MainWindowPage}"
+                                            Command="{Binding DataContext.StartProgram, ElementName=DashboardPageRoot}"
                                             CommandParameter="{Binding}"/>
                                     <Button Content="Stop"
-                                            Command="{Binding DataContext.StopProgram, ElementName=MainWindowPage}"
+                                            Command="{Binding DataContext.StopProgram, ElementName=DashboardPageRoot}"
                                             CommandParameter="{Binding}"/>
                                 </StackPanel>
                             </Grid>

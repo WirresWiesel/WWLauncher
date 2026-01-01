@@ -93,14 +93,6 @@
                 Padding="12">
 
             <StackPanel Spacing="10">
-                <TextBlock Text="Name"
-                           FontSize="18"
-                           FontWeight="SemiBold"/>
-
-                <TextBox Grid.Column="0"
-                         Margin="6,0,6,0"
-                         Text="{Binding EditableAssetName, Mode=TwoWay}"
-                         PlaceholderText="Name"/>
 
                 <TextBlock Text="Main Game"
                            FontSize="18"
@@ -133,14 +125,14 @@
                             Content="📁"
                             ToolTipService.ToolTip="Change .exe Path"
                             Command="{Binding DataContext.Browse, ElementName=AssetsWindowPage}"
-                            CommandParameter="{Binding}"/>
+                            CommandParameter="{Binding EditableSelectedAsset}"/>
 
                     <!-- Entfernen -->
                     <Button Grid.Column="3"
                             Content="🗑"
                             ToolTipService.ToolTip="Delete Program"
-                            Command="{Binding DataContext.Delete, ElementName=AssetsWindowPage}"
-                            CommandParameter="{Binding}"/>
+                            Command="{Binding DataContext.DeleteMainGamePath, ElementName=AssetsWindowPage}"
+                            CommandParameter="{Binding EditableSelectedAsset}"/>
                 </Grid>
 
                 <TextBlock Text="Programs"
