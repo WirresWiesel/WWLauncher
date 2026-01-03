@@ -23,6 +23,9 @@ namespace Launcher.Core.ViewModels
         [ObservableProperty]
         public string state;
 
+        [ObservableProperty]
+        public bool isLauncher;
+
         public string ProcessName { get; set; }
         public Process? ProcessInstance { get; set; }
         public ProcessObject? ProcessObject { get; set; }
@@ -34,6 +37,7 @@ namespace Launcher.Core.ViewModels
             this.ExePath = asset.ExePath;
             this.Name = asset.Name;
             this.State = asset.State;
+            this.isLauncher = asset.IsLauncher;
             this.ProcessName = asset.ProcessName;
             this.programlist = new ObservableCollection<ProgramViewModel>(asset.ProgramList.Select(p => new ProgramViewModel(p)));
         }
@@ -43,6 +47,7 @@ namespace Launcher.Core.ViewModels
             this.ExePath = asset.ExePath;
             this.Name = asset.Name;
             this.State = asset.State;
+            this.isLauncher = asset.IsLauncher;
             this.ProcessName = asset.ProcessName;
             this.programlist = new ObservableCollection<ProgramViewModel>(asset.programlist.Select(p => new ProgramViewModel(p)));
         }
@@ -81,6 +86,7 @@ namespace Launcher.Core.ViewModels
                 ExePath = this.ExePath,
                 Name = this.Name,
                 State = this.State,
+                IsLauncher = this.IsLauncher,
                 ProgramList = new ObservableCollection<Programinfo>(this.programlist.Select(p => p.ToModel()))
             };
         }
@@ -91,6 +97,7 @@ namespace Launcher.Core.ViewModels
             this.Name = assetViewModel.Name;
             this.State = assetViewModel.State;
             this.ProcessName = assetViewModel.ProcessName;
+            this.IsLauncher = assetViewModel.IsLauncher;
             this.programlist = new ObservableCollection<ProgramViewModel>(assetViewModel.programlist.Select(p => new ProgramViewModel(p)));
         }
 
@@ -99,7 +106,7 @@ namespace Launcher.Core.ViewModels
             return !string.IsNullOrEmpty(this.ExePath);
         }
 
-        public void SetProcess(Process process)
+        public void SetProcessObject(Process process)
         {
             if (process != null)
             {
@@ -108,6 +115,17 @@ namespace Launcher.Core.ViewModels
                 _processObject.Initialize();
                 _processObject.AddProcess(process);
                 this.ProcessObject = _processObject;
+                this.SetProcessName(process);
+                this.SetProcessInstance(process);
+                this.SetCurrentState(Programinfo.Running);
+            }
+        }
+
+        public void SetProcess(Process process)
+        {
+            if (process != null)
+            {
+                Debug.WriteLine($"[Info] Asset: \"{this.Name}\"; setting ProcessInstance");
                 this.SetProcessName(process);
                 this.SetProcessInstance(process);
                 this.SetCurrentState(Programinfo.Running);

@@ -18,6 +18,7 @@ namespace Launcher.Core.Models
 
         public string Name { get; set; } = string.Empty;
         public string ExePath { get; set; } = string.Empty;
+        public bool IsLauncher { get; set; } = false;
 
         [JsonIgnore]
         public ProcessObject? ProcessObject { get; set; }
@@ -48,6 +49,7 @@ namespace Launcher.Core.Models
             this.ExePath = proginfo.ExePath;
             this.Name = proginfo.Name;
             this.State = proginfo.State;
+            this.IsLauncher = proginfo.IsLauncher;
         }
     }
 }

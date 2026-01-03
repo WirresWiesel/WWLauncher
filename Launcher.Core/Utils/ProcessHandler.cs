@@ -1,7 +1,7 @@
 ﻿using Launcher.Core.Interfaces;
 using Launcher.Core.Models;
 using Launcher.Core.ViewModels;
-using System;
+using System.ComponentModel;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -24,7 +24,14 @@ namespace Launcher.Core.Utils
             };
 
             Process? _process = Process.Start(startinfo);
-            program.SetProcess(_process!);
+            if (program.IsLauncher)
+            {
+                program.SetProcess(_process!);
+            }
+            else
+            {
+                program.SetProcessObject(_process!);
+            }
             return _process;
         }
 
@@ -73,7 +80,15 @@ namespace Launcher.Core.Utils
                 if (!process.WaitForExit(500))
                 {
                     Debug.WriteLine($"[Info] ProcessHandler: Kill \"{process.Id}\"");
-                    process!.Kill(true);
+                    try
+                    {
+                        process!.Kill();
+                    }
+                    catch (Win32Exception ex)
+                    {
+                        Debug.WriteLine("[Error] ProcessHandler: Failure while killing process: " + ex.Message);
+                        return false;
+                    }
                 }
                 return true;
             }

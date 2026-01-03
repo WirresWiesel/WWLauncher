@@ -22,6 +22,9 @@ namespace Launcher.Core.ViewModels
         [ObservableProperty]
         public string state;
 
+        [ObservableProperty]
+        public bool isLauncher;
+
         public Process? ProcessInstance { get; set; }
         public ProcessObject? ProcessObject { get; set; }
         public string ProcessName { get; set; }
@@ -34,6 +37,7 @@ namespace Launcher.Core.ViewModels
             this.exePath = programinfo.ExePath;
             this.name = programinfo.Name;
             this.state = programinfo.State;
+            this.isLauncher = programinfo.IsLauncher;
         }
         public ProgramViewModel(ProgramViewModel programViewModel)
         {
@@ -43,6 +47,7 @@ namespace Launcher.Core.ViewModels
             this.ExePath = programViewModel.ExePath;
             this.Name = programViewModel.Name;
             this.state = programViewModel.state;
+            this.isLauncher = programViewModel.isLauncher;
         }
         public void SetProcessName(Process? process)
         {
@@ -74,11 +79,12 @@ namespace Launcher.Core.ViewModels
             {
                 Name = this.Name,
                 ExePath = this.ExePath,
-                ProcessName = this.ProcessName
+                ProcessName = this.ProcessName,
+                IsLauncher = this.IsLauncher,
             };
         }
 
-        public void SetProcess(Process process)
+        public void SetProcessObject(Process process)
         {
             if (process != null)
             {
@@ -93,6 +99,18 @@ namespace Launcher.Core.ViewModels
             }
         }
 
+        public void SetProcess(Process process)
+        {
+            if (process != null)
+            {
+                Debug.WriteLine($"[Info] Asset: \"{this.Name}\"; setting ProcessInstance");
+                ProcessObject _processObject = new ProcessObject();
+                this.SetProcessName(process);
+                this.SetProcessInstance(process);
+                this.SetCurrentState(Programinfo.Running);
+            }
+        }
+
         public void CopyFrom(ProgramViewModel programViewModel)
         {
             this.ProcessInstance = programViewModel.ProcessInstance;
@@ -101,6 +119,7 @@ namespace Launcher.Core.ViewModels
             this.ExePath = programViewModel.ExePath;
             this.Name = programViewModel.Name;
             this.State = programViewModel.State;
+            this.IsLauncher = programViewModel.IsLauncher;
         }
         public void CopyFrom(AssetViewModel assetViewModel)
         {
@@ -110,6 +129,7 @@ namespace Launcher.Core.ViewModels
             this.ExePath = assetViewModel.ExePath;
             this.Name = assetViewModel.Name;
             this.State = assetViewModel.State;
+            this.IsLauncher = assetViewModel.IsLauncher;
         }
     }
 }

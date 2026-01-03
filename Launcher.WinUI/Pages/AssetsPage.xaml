@@ -94,9 +94,27 @@
 
             <StackPanel Spacing="10">
 
-                <TextBlock Text="Main Game"
-                           FontSize="18"
-                           FontWeight="SemiBold"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <TextBlock Grid.Column="0"
+                               Text="Main Game"
+                               FontSize="18"
+                               FontWeight="SemiBold"/>
+
+                    <TextBlock Grid.Column="4"
+                               Text="Start Mode"
+                               HorizontalAlignment="Right"
+                               Margin="0 0 70 0"
+                               FontSize="18"
+                               FontWeight="SemiBold"/>
+                </Grid>
 
                 <Grid Padding="6">
                     <Grid.ColumnDefinitions>
@@ -104,16 +122,19 @@
                         <ColumnDefinition Width="4*"/>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
                     <!-- Programmname -->
                     <TextBox Grid.Column="0"
+                             VerticalAlignment="Center"
                              Margin="0,0,20,0"
                              Text="{Binding EditableSelectedAsset.Name, Mode=TwoWay}"
                              PlaceholderText="Name"/>
 
                     <!-- EXE Pfad -->
                     <TextBox Grid.Column="1"
+                             VerticalAlignment="Center"
                              Margin="0,0,20,0"
                              Text="{Binding EditableSelectedAsset.ExePath, Mode=TwoWay}"
                              PlaceholderText="Path to .exe"
@@ -121,6 +142,7 @@
 
                     <!-- Entfernen -->
                     <Button Grid.Column="2"
+                            VerticalAlignment="Center"
                             Margin="0,0,6,0"
                             Content="📁"
                             ToolTipService.ToolTip="Change .exe Path"
@@ -129,10 +151,18 @@
 
                     <!-- Entfernen -->
                     <Button Grid.Column="3"
+                            VerticalAlignment="Center"
                             Content="🗑"
                             ToolTipService.ToolTip="Delete Program"
                             Command="{Binding DataContext.DeleteMainGamePath, ElementName=AssetsWindowPage}"
                             CommandParameter="{Binding EditableSelectedAsset}"/>
+
+                    <ToggleSwitch Grid.Column="4"
+                                  Margin="20 0 0 0"
+                                  HorizontalAlignment="Left"
+                                  OffContent="Is not Launcher"
+                                  OnContent="Is Launcher"
+                                  IsOn="{Binding EditableSelectedAsset.IsLauncher, Mode=TwoWay}"/>
                 </Grid>
 
                 <TextBlock Text="Programs"
@@ -148,21 +178,24 @@
                                     <ColumnDefinition Width="4*"/>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
 
                                 <!-- Programmname -->
                                 <TextBox Grid.Column="0"
                                          Margin="0,0,20,0"
+                                         VerticalAlignment="Center"
                                          Text="{Binding Name, Mode=TwoWay}"
                                          PlaceholderText="Name"/>
 
                                 <!-- EXE Pfad -->
                                 <TextBox Grid.Column="1"
                                          Margin="0,0,20,0"
+                                         VerticalAlignment="Center"
                                          Text="{Binding ExePath, Mode=TwoWay}"
                                          PlaceholderText="Path to .exe"
                                          IsReadOnly="True"/>
-
+                                
                                 <!-- Entfernen -->
                                 <Button Grid.Column="2"
                                         Margin="0,0,6,0"
@@ -177,6 +210,13 @@
                                         ToolTipService.ToolTip="Delete Program"
                                         Command="{Binding DataContext.Delete, ElementName=AssetsWindowPage}"
                                         CommandParameter="{Binding}"/>
+
+                                <ToggleSwitch Grid.Column="4"
+                                              Margin="20 0 0 0"
+                                              HorizontalAlignment="Left"
+                                              OffContent="Is no Launcher"
+                                              OnContent="Is Launcher"
+                                              IsOn="{Binding IsLauncher, Mode=TwoWay}"/>
                             </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>

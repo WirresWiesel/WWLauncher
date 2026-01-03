@@ -416,6 +416,11 @@ namespace Launcher.WinUI.Logic
                 }
                 this.SetDirtyFlag(true);
             }
+            else if (args.PropertyName == "IsLauncher")
+            {
+                Debug.WriteLine($"[UILogic] UILogic: Property changed {args.PropertyName}");
+                this.SetDirtyFlag(true);
+            }
         }
 
         /// <summary>
