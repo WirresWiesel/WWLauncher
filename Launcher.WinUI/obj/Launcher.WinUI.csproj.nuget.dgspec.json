@@ -163,6 +163,10 @@
               "version": "[9.0.11, 9.0.11]"
             },
             {
+              "name": "Microsoft.NETCore.App.Crossgen2.win-x64",
+              "version": "[9.0.11, 9.0.11]"
+            },
+            {
               "name": "Microsoft.NETCore.App.Runtime.win-arm64",
               "version": "[9.0.11, 9.0.11]"
             },

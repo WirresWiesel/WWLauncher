@@ -92,7 +92,7 @@ namespace Launcher.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Launcher.WPF;component/views/editwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Launcher.WPF;V1.0.0.0;component/views/editwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\EditWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
