@@ -91,7 +91,7 @@
                            FontWeight="SemiBold"/>
 
                 <!-- Programmliste für das ausgewählte Asset -->
-                <ListView ItemsSource="{Binding Programlist}">
+                <ListView ItemsSource="{Binding EditableSelectedAsset.programlist}">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="viewmodels:ProgramViewModel">
                             <Grid>

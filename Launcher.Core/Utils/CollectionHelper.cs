@@ -80,7 +80,6 @@ namespace Launcher.Core.Utils
                 if (_targetAsset == null)
                     return;
 
-                //_targetAsset.CopyFrom(editableAsset);
                 _targetAsset.CopyFrom(editableAsset);
             }
         }

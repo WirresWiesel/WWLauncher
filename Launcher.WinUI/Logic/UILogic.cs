@@ -244,6 +244,8 @@ namespace Launcher.WinUI.Logic
                         }
                         else
                             Debug.WriteLine("[Error] UILogic: Program is null");
+
+                        this.UpdateProgramStates(_program!);
                     }
                 }
             });
@@ -357,7 +359,7 @@ namespace Launcher.WinUI.Logic
         /// All programs are reloaded, their PropertyChanged events are subscribed,
         /// their states are updated, and the list is assigned to the bound collection.
         /// </summary>
-        private void UpdateProgramlists()
+        public void UpdateProgramlists()
         {
             Debug.WriteLine("[Info] UILogic: Updating EditableProgramList");
             Programlist.Clear();

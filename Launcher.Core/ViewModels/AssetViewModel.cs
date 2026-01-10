@@ -30,7 +30,7 @@ namespace Launcher.Core.ViewModels
         public Process? ProcessInstance { get; set; }
         public ProcessObject? ProcessObject { get; set; }
 
-        public ObservableCollection<ProgramViewModel> programlist;
+        public ObservableCollection<ProgramViewModel> programlist { get; set; }
 
         public AssetViewModel(Asset asset)
         {
